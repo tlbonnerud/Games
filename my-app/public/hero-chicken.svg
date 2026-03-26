@@ -1,0 +1,166 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" shape-rendering="crispEdges">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#a8d8a0"/>
+      <stop offset="100%" stop-color="#5a9e50"/>
+    </linearGradient>
+    <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#6bc45e"/>
+      <stop offset="100%" stop-color="#3d7a35"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Sky -->
+  <rect width="1600" height="900" fill="url(#sky)"/>
+
+  <!-- Ground -->
+  <rect x="0" y="560" width="1600" height="340" fill="url(#ground)"/>
+
+  <!-- Ground line detail -->
+  <rect x="0" y="560" width="1600" height="8" fill="#4aaa42"/>
+
+  <!-- Sun -->
+  <rect x="1380" y="60" width="120" height="120" fill="#ffe270" rx="0"/>
+  <rect x="1360" y="80" width="20" height="80" fill="#ffe270"/>
+  <rect x="1500" y="80" width="20" height="80" fill="#ffe270"/>
+  <rect x="1400" y="40" width="80" height="20" fill="#ffe270"/>
+  <rect x="1400" y="180" width="80" height="20" fill="#ffe270"/>
+  <rect x="1360" y="60" width="20" height="20" fill="#ffe270"/>
+  <rect x="1500" y="60" width="20" height="20" fill="#ffe270"/>
+  <rect x="1360" y="160" width="20" height="20" fill="#ffe270"/>
+  <rect x="1500" y="160" width="20" height="20" fill="#ffe270"/>
+
+  <!-- Clouds -->
+  <rect x="100" y="80" width="200" height="60" fill="#ffffffcc" rx="0"/>
+  <rect x="80" y="100" width="240" height="40" fill="#ffffffcc"/>
+  <rect x="120" y="60" width="120" height="40" fill="#ffffffcc"/>
+
+  <rect x="700" y="120" width="160" height="50" fill="#ffffffbb"/>
+  <rect x="680" y="138" width="200" height="32" fill="#ffffffbb"/>
+  <rect x="720" y="104" width="80" height="32" fill="#ffffffbb"/>
+
+  <rect x="1200" y="100" width="140" height="48" fill="#ffffffbb"/>
+  <rect x="1180" y="116" width="180" height="32" fill="#ffffffbb"/>
+
+  <!-- Barn (left) -->
+  <!-- Barn walls -->
+  <rect x="80" y="340" width="280" height="220" fill="#c0392b"/>
+  <!-- Barn roof -->
+  <rect x="60" y="260" width="320" height="100" fill="#a93226"/>
+  <polygon points="200,200 60,280 340,280" fill="#a93226"/>
+  <!-- Barn door -->
+  <rect x="160" y="440" width="80" height="120" fill="#4a2800"/>
+  <rect x="220" y="440" width="20" height="120" fill="#3a1e00"/>
+  <!-- Barn windows -->
+  <rect x="100" y="380" width="60" height="60" fill="#f1e19a"/>
+  <rect x="110" y="390" width="20" height="40" fill="#c8ba70"/>
+  <rect x="130" y="390" width="20" height="40" fill="#c8ba70"/>
+  <rect x="100" y="410" width="60" height="5" fill="#a09048"/>
+  <!-- Barn window right -->
+  <rect x="280" y="380" width="60" height="60" fill="#f1e19a"/>
+  <rect x="290" y="390" width="20" height="40" fill="#c8ba70"/>
+  <rect x="310" y="390" width="20" height="40" fill="#c8ba70"/>
+  <rect x="280" y="410" width="60" height="5" fill="#a09048"/>
+
+  <!-- Silo -->
+  <rect x="380" y="380" width="80" height="180" fill="#d0c090"/>
+  <rect x="370" y="360" width="100" height="40" fill="#b8a870"/>
+  <rect x="380" y="340" width="80" height="30" fill="#a09060"/>
+  <!-- Silo highlight -->
+  <rect x="390" y="400" width="12" height="140" fill="#e8d8a0"/>
+
+  <!-- Fence -->
+  <rect x="0" y="555" width="1600" height="12" fill="#d4a85a"/>
+  <!-- Fence posts -->
+  <rect x="20" y="520" width="16" height="52" fill="#c49040"/>
+  <rect x="120" y="520" width="16" height="52" fill="#c49040"/>
+  <rect x="220" y="520" width="16" height="52" fill="#c49040"/>
+  <rect x="320" y="520" width="16" height="52" fill="#c49040"/>
+  <rect x="820" y="520" width="16" height="52" fill="#c49040"/>
+  <rect x="920" y="520" width="16" height="52" fill="#c49040"/>
+  <rect x="1020" y="520" width="16" height="52" fill="#c49040"/>
+  <rect x="1120" y="520" width="16" height="52" fill="#c49040"/>
+  <rect x="1220" y="520" width="16" height="52" fill="#c49040"/>
+  <rect x="1320" y="520" width="16" height="52" fill="#c49040"/>
+  <rect x="1420" y="520" width="16" height="52" fill="#c49040"/>
+  <rect x="1520" y="520" width="16" height="52" fill="#c49040"/>
+
+  <!-- Large pixel chicken (center-right) -->
+  <!-- Body -->
+  <rect x="920" y="390" width="160" height="140" fill="#fff8cf"/>
+  <!-- Wing left -->
+  <rect x="888" y="410" width="40" height="88" fill="#fff0b0"/>
+  <rect x="872" y="420" width="20" height="64" fill="#fff0b0"/>
+  <!-- Wing right -->
+  <rect x="1072" y="410" width="40" height="88" fill="#fff0b0"/>
+  <rect x="1108" y="420" width="20" height="64" fill="#fff0b0"/>
+  <!-- Belly -->
+  <rect x="936" y="430" width="128" height="80" fill="#ffe69d"/>
+  <!-- Head -->
+  <rect x="960" y="300" width="88" height="104" fill="#fff8cf"/>
+  <!-- Comb -->
+  <rect x="972" y="268" width="20" height="32" fill="#d64545"/>
+  <rect x="1000" y="256" width="20" height="44" fill="#d64545"/>
+  <rect x="1028" y="268" width="20" height="32" fill="#d64545"/>
+  <!-- Eye -->
+  <rect x="1024" y="324" width="20" height="20" fill="#1e1e2e"/>
+  <rect x="1028" y="328" width="8" height="8" fill="#ffffff"/>
+  <!-- Beak -->
+  <rect x="1052" y="340" width="32" height="20" fill="#f4b13b"/>
+  <rect x="1076" y="344" width="12" height="12" fill="#d9822b"/>
+  <!-- Wattle -->
+  <rect x="960" y="360" width="20" height="28" fill="#d64545"/>
+  <rect x="952" y="372" width="16" height="16" fill="#c03030"/>
+  <!-- Legs -->
+  <rect x="960" y="528" width="24" height="44" fill="#f6a23d"/>
+  <rect x="1016" y="528" width="24" height="44" fill="#f6a23d"/>
+  <!-- Feet -->
+  <rect x="944" y="564" width="44" height="12" fill="#d9822b"/>
+  <rect x="1000" y="564" width="44" height="12" fill="#d9822b"/>
+
+  <!-- Small chicken left -->
+  <rect x="560" y="460" width="72" height="64" fill="#fff8cf"/>
+  <rect x="540" y="472" width="24" height="44" fill="#fff0b0"/>
+  <rect x="584" y="452" width="40" height="48" fill="#fff8cf"/>
+  <rect x="592" y="436" width="12" height="16" fill="#d64545"/>
+  <rect x="606" y="452" width="14" height="8" fill="#f4b13b"/>
+  <rect x="608" y="444" width="10" height="8" fill="#1e1e2e"/>
+  <rect x="572" y="524" width="12" height="20" fill="#f6a23d"/>
+  <rect x="596" y="524" width="12" height="20" fill="#f6a23d"/>
+
+  <!-- Small chicken right -->
+  <rect x="1260" y="472" width="72" height="64" fill="#fff8cf"/>
+  <rect x="1284" y="460" width="40" height="48" fill="#fff8cf"/>
+  <rect x="1288" y="444" width="12" height="16" fill="#d64545"/>
+  <rect x="1296" y="468" width="14" height="8" fill="#f4b13b"/>
+  <rect x="1296" y="460" width="10" height="8" fill="#1e1e2e"/>
+  <rect x="1272" y="536" width="12" height="20" fill="#f6a23d"/>
+  <rect x="1296" y="536" width="12" height="20" fill="#f6a23d"/>
+  <rect x="1332" y="480" width="24" height="44" fill="#fff0b0"/>
+
+  <!-- Eggs on ground -->
+  <ellipse cx="840" cy="575" rx="20" ry="14" fill="#fff8cf"/>
+  <ellipse cx="885" cy="580" rx="18" ry="12" fill="#fff8cf"/>
+  <ellipse cx="1150" cy="572" rx="20" ry="14" fill="#fff8cf"/>
+
+  <!-- Coins -->
+  <rect x="1170" y="560" width="24" height="24" rx="0" fill="#f4c86c"/>
+  <rect x="1174" y="564" width="16" height="16" fill="#f4b13b"/>
+  <rect x="1204" y="556" width="24" height="24" fill="#f4c86c"/>
+  <rect x="1208" y="560" width="16" height="16" fill="#f4b13b"/>
+
+  <!-- Grass tufts -->
+  <rect x="500" y="552" width="8" height="20" fill="#3aaa30"/>
+  <rect x="512" y="548" width="8" height="24" fill="#3aaa30"/>
+  <rect x="524" y="554" width="8" height="18" fill="#3aaa30"/>
+  <rect x="1380" y="552" width="8" height="20" fill="#3aaa30"/>
+  <rect x="1392" y="548" width="8" height="24" fill="#3aaa30"/>
+  <rect x="1404" y="554" width="8" height="18" fill="#3aaa30"/>
+
+  <!-- Title text area (dark overlay behind text) -->
+  <rect x="0" y="680" width="1600" height="220" fill="#00000044"/>
+
+  <!-- Game title -->
+  <text x="800" y="780" font-family="monospace" font-size="80" font-weight="bold" fill="#ffe38f" text-anchor="middle" letter-spacing="4" style="text-shadow: 4px 4px 0 #00000088">CHICKEN FARM FACTORY</text>
+  <text x="800" y="850" font-family="monospace" font-size="32" fill="#d2e7c8" text-anchor="middle" letter-spacing="2">Idle Clicker · Build · Automate · Prestige</text>
+</svg>

@@ -14,7 +14,7 @@ export const HUB_GAMES: HubGame[] = [
     genre: "Idle",
     description: "Bygg en pixel-farm med automatisering, upgrades og produksjonskjedeeffekt.",
     href: "/farm",
-    image: "https://images.unsplash.com/photo-1612178537253-bccd437b730e?w=1600",
+    image: "/hero-chicken.svg",
   },
   {
     id: 2,
@@ -22,7 +22,7 @@ export const HUB_GAMES: HubGame[] = [
     genre: "Arcade",
     description: "Sikt, match bobler og fjern brettet før skuddene tar over skjermen.",
     href: "/bubble-shooter",
-    image: "https://images.unsplash.com/photo-1623211267242-f8f8b4ec0f98?w=1600",
+    image: "/hero-bubble.svg",
   },
   {
     id: 3,
@@ -30,7 +30,7 @@ export const HUB_GAMES: HubGame[] = [
     genre: "Retro",
     description: "Klassisk Snake med lysende arena, raskere tempo og høy score-jakt.",
     href: "/snake",
-    image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1600",
+    image: "/hero-snake.svg",
   },
   {
     id: 4,
@@ -38,7 +38,7 @@ export const HUB_GAMES: HubGame[] = [
     genre: "Classic",
     description: "Tetris med hold, ghost piece, sprint-mode og moderne visuelle effekter.",
     href: "/tetris",
-    image: "https://images.unsplash.com/photo-1580327344181-c1163234e5a0?w=1600",
+    image: "/hero-tetris.svg",
   },
   {
     id: 5,
@@ -46,7 +46,7 @@ export const HUB_GAMES: HubGame[] = [
     genre: "Racing",
     description: "Race ned snødekte bakker med pingvinen Tux på klassiske baner.",
     href: "/tux-racer/levels.html",
-    image: "https://images.unsplash.com/photo-1517292987719-0369a794ec0f?w=1600",
+    image: "/tux-racer/assets/splash.webp",
   },
 ];
 

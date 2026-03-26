@@ -1,0 +1,162 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <defs>
+    <radialGradient id="bbg" cx="50%" cy="40%" r="70%">
+      <stop offset="0%" stop-color="#1a0a38"/>
+      <stop offset="100%" stop-color="#07050f"/>
+    </radialGradient>
+    <filter id="bglow">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="bglow2">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <!-- Bubble gradient for each color -->
+    <radialGradient id="bR" cx="35%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#ff8888"/>
+      <stop offset="100%" stop-color="#cc1122"/>
+    </radialGradient>
+    <radialGradient id="bB" cx="35%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#88aaff"/>
+      <stop offset="100%" stop-color="#1133cc"/>
+    </radialGradient>
+    <radialGradient id="bG" cx="35%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#88ffaa"/>
+      <stop offset="100%" stop-color="#119944"/>
+    </radialGradient>
+    <radialGradient id="bY" cx="35%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#ffee88"/>
+      <stop offset="100%" stop-color="#cc9900"/>
+    </radialGradient>
+    <radialGradient id="bP" cx="35%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#ee88ff"/>
+      <stop offset="100%" stop-color="#9911cc"/>
+    </radialGradient>
+    <radialGradient id="bO" cx="35%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#ffbb66"/>
+      <stop offset="100%" stop-color="#cc5500"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1600" height="900" fill="url(#bbg)"/>
+
+  <!-- Subtle sparkle stars -->
+  <g fill="#ffffff" opacity="0.3">
+    <circle cx="120" cy="80" r="2"/>
+    <circle cx="340" cy="45" r="1.5"/>
+    <circle cx="580" cy="130" r="2"/>
+    <circle cx="820" cy="60" r="1.5"/>
+    <circle cx="1060" cy="90" r="2"/>
+    <circle cx="1300" cy="50" r="1.5"/>
+    <circle cx="1520" cy="110" r="2"/>
+    <circle cx="200" cy="200" r="1.5"/>
+    <circle cx="1400" cy="220" r="2"/>
+    <circle cx="760" cy="180" r="1.5"/>
+  </g>
+
+  <!-- Bubble grid – rows staggered, hex-style -->
+  <!-- Row 1 (top) -->
+  <g filter="url(#bglow)">
+    <circle cx="200" cy="100" r="44" fill="url(#bR)"/><circle cx="200" cy="100" r="16" fill="#ffffff22"/>
+    <circle cx="296" cy="100" r="44" fill="url(#bB)"/><circle cx="296" cy="100" r="16" fill="#ffffff22"/>
+    <circle cx="392" cy="100" r="44" fill="url(#bG)"/><circle cx="392" cy="100" r="16" fill="#ffffff22"/>
+    <circle cx="488" cy="100" r="44" fill="url(#bY)"/><circle cx="488" cy="100" r="16" fill="#ffffff22"/>
+    <circle cx="584" cy="100" r="44" fill="url(#bP)"/><circle cx="584" cy="100" r="16" fill="#ffffff22"/>
+    <circle cx="680" cy="100" r="44" fill="url(#bR)"/><circle cx="680" cy="100" r="16" fill="#ffffff22"/>
+    <circle cx="776" cy="100" r="44" fill="url(#bO)"/><circle cx="776" cy="100" r="16" fill="#ffffff22"/>
+    <circle cx="872" cy="100" r="44" fill="url(#bB)"/><circle cx="872" cy="100" r="16" fill="#ffffff22"/>
+    <circle cx="968" cy="100" r="44" fill="url(#bG)"/><circle cx="968" cy="100" r="16" fill="#ffffff22"/>
+    <circle cx="1064" cy="100" r="44" fill="url(#bY)"/><circle cx="1064" cy="100" r="16" fill="#ffffff22"/>
+    <circle cx="1160" cy="100" r="44" fill="url(#bP)"/><circle cx="1160" cy="100" r="16" fill="#ffffff22"/>
+    <circle cx="1256" cy="100" r="44" fill="url(#bR)"/><circle cx="1256" cy="100" r="16" fill="#ffffff22"/>
+    <circle cx="1352" cy="100" r="44" fill="url(#bB)"/><circle cx="1352" cy="100" r="16" fill="#ffffff22"/>
+    <circle cx="1448" cy="100" r="44" fill="url(#bO)"/><circle cx="1448" cy="100" r="16" fill="#ffffff22"/>
+  </g>
+
+  <!-- Row 2 (offset) -->
+  <g filter="url(#bglow)">
+    <circle cx="248" cy="183" r="44" fill="url(#bG)"/><circle cx="248" cy="183" r="16" fill="#ffffff22"/>
+    <circle cx="344" cy="183" r="44" fill="url(#bY)"/><circle cx="344" cy="183" r="16" fill="#ffffff22"/>
+    <circle cx="440" cy="183" r="44" fill="url(#bP)"/><circle cx="440" cy="183" r="16" fill="#ffffff22"/>
+    <circle cx="536" cy="183" r="44" fill="url(#bR)"/><circle cx="536" cy="183" r="16" fill="#ffffff22"/>
+    <circle cx="632" cy="183" r="44" fill="url(#bB)"/><circle cx="632" cy="183" r="16" fill="#ffffff22"/>
+    <circle cx="728" cy="183" r="44" fill="url(#bG)"/><circle cx="728" cy="183" r="16" fill="#ffffff22"/>
+    <circle cx="824" cy="183" r="44" fill="url(#bP)"/><circle cx="824" cy="183" r="16" fill="#ffffff22"/>
+    <circle cx="920" cy="183" r="44" fill="url(#bO)"/><circle cx="920" cy="183" r="16" fill="#ffffff22"/>
+    <circle cx="1016" cy="183" r="44" fill="url(#bR)"/><circle cx="1016" cy="183" r="16" fill="#ffffff22"/>
+    <circle cx="1112" cy="183" r="44" fill="url(#bB)"/><circle cx="1112" cy="183" r="16" fill="#ffffff22"/>
+    <circle cx="1208" cy="183" r="44" fill="url(#bY)"/><circle cx="1208" cy="183" r="16" fill="#ffffff22"/>
+    <circle cx="1304" cy="183" r="44" fill="url(#bG)"/><circle cx="1304" cy="183" r="16" fill="#ffffff22"/>
+    <circle cx="1400" cy="183" r="44" fill="url(#bR)"/><circle cx="1400" cy="183" r="16" fill="#ffffff22"/>
+  </g>
+
+  <!-- Row 3 -->
+  <g filter="url(#bglow)" opacity="0.9">
+    <circle cx="200" cy="266" r="44" fill="url(#bY)"/><circle cx="200" cy="266" r="16" fill="#ffffff22"/>
+    <circle cx="296" cy="266" r="44" fill="url(#bP)"/><circle cx="296" cy="266" r="16" fill="#ffffff22"/>
+    <circle cx="392" cy="266" r="44" fill="url(#bB)"/><circle cx="392" cy="266" r="16" fill="#ffffff22"/>
+    <circle cx="488" cy="266" r="44" fill="url(#bO)"/><circle cx="488" cy="266" r="16" fill="#ffffff22"/>
+    <circle cx="584" cy="266" r="44" fill="url(#bG)"/><circle cx="584" cy="266" r="16" fill="#ffffff22"/>
+    <circle cx="680" cy="266" r="44" fill="url(#bY)"/><circle cx="680" cy="266" r="16" fill="#ffffff22"/>
+    <circle cx="776" cy="266" r="44" fill="url(#bR)"/><circle cx="776" cy="266" r="16" fill="#ffffff22"/>
+    <circle cx="872" cy="266" r="44" fill="url(#bP)"/><circle cx="872" cy="266" r="16" fill="#ffffff22"/>
+    <circle cx="968" cy="266" r="44" fill="url(#bB)"/><circle cx="968" cy="266" r="16" fill="#ffffff22"/>
+    <circle cx="1064" cy="266" r="44" fill="url(#bO)"/><circle cx="1064" cy="266" r="16" fill="#ffffff22"/>
+    <circle cx="1160" cy="266" r="44" fill="url(#bG)"/><circle cx="1160" cy="266" r="16" fill="#ffffff22"/>
+    <circle cx="1256" cy="266" r="44" fill="url(#bY)"/><circle cx="1256" cy="266" r="16" fill="#ffffff22"/>
+    <circle cx="1352" cy="266" r="44" fill="url(#bR)"/><circle cx="1352" cy="266" r="16" fill="#ffffff22"/>
+    <circle cx="1448" cy="266" r="44" fill="url(#bB)"/><circle cx="1448" cy="266" r="16" fill="#ffffff22"/>
+  </g>
+
+  <!-- Row 4 (faded) -->
+  <g filter="url(#bglow)" opacity="0.65">
+    <circle cx="248" cy="349" r="44" fill="url(#bP)"/>
+    <circle cx="344" cy="349" r="44" fill="url(#bG)"/>
+    <circle cx="440" cy="349" r="44" fill="url(#bR)"/>
+    <circle cx="536" cy="349" r="44" fill="url(#bY)"/>
+    <circle cx="632" cy="349" r="44" fill="url(#bO)"/>
+    <circle cx="728" cy="349" r="44" fill="url(#bB)"/>
+    <circle cx="824" cy="349" r="44" fill="url(#bR)"/>
+    <circle cx="920" cy="349" r="44" fill="url(#bP)"/>
+    <circle cx="1016" cy="349" r="44" fill="url(#bG)"/>
+    <circle cx="1112" cy="349" r="44" fill="url(#bY)"/>
+    <circle cx="1208" cy="349" r="44" fill="url(#bO)"/>
+    <circle cx="1304" cy="349" r="44" fill="url(#bB)"/>
+    <circle cx="1400" cy="349" r="44" fill="url(#bP)"/>
+  </g>
+
+  <!-- Shooter cannon at bottom center -->
+  <g>
+    <!-- Base platform -->
+    <ellipse cx="800" cy="870" rx="120" ry="20" fill="#2a1a4a"/>
+    <!-- Cannon body -->
+    <rect x="776" y="800" width="48" height="60" rx="24" fill="#4433aa"/>
+    <rect x="784" y="808" width="32" height="44" rx="16" fill="#6655cc"/>
+    <!-- Barrel -->
+    <rect x="789" y="760" width="22" height="50" rx="4" fill="#7766dd"/>
+    <!-- Aim line -->
+    <line x1="800" y1="755" x2="632" y2="183" stroke="#ffffff22" stroke-width="2" stroke-dasharray="8 8"/>
+    <!-- Bubble in cannon -->
+    <circle cx="800" cy="750" r="34" fill="url(#bP)" filter="url(#bglow2)"/>
+    <circle cx="800" cy="750" r="12" fill="#ffffff33"/>
+  </g>
+
+  <!-- Popping bubbles effect (top-left cluster) -->
+  <g filter="url(#bglow2)" opacity="0.7">
+    <circle cx="150" cy="100" r="52" fill="none" stroke="#ff8888" stroke-width="3"/>
+    <circle cx="150" cy="100" r="38" fill="none" stroke="#ff888844" stroke-width="2"/>
+  </g>
+
+  <!-- Score display -->
+  <rect x="60" y="460" width="220" height="100" rx="8" fill="#0d0620aa"/>
+  <rect x="60" y="460" width="220" height="100" rx="8" fill="none" stroke="#ee88ff44" stroke-width="2"/>
+  <text x="170" y="505" font-family="monospace" font-size="20" fill="#ee88ff88" text-anchor="middle" letter-spacing="2">SCORE</text>
+  <text x="170" y="548" font-family="monospace" font-size="40" fill="#ee88ff" text-anchor="middle" font-weight="bold" filter="url(#bglow)">18540</text>
+
+  <!-- Title -->
+  <rect x="0" y="730" width="1600" height="170" fill="#00000077"/>
+  <text x="800" y="820" font-family="monospace" font-size="88" font-weight="bold" fill="#ee88ff" text-anchor="middle" letter-spacing="4" filter="url(#bglow2)">BUBBLE SHOOTER</text>
+  <text x="800" y="878" font-family="monospace" font-size="28" fill="#ee88ff88" text-anchor="middle" letter-spacing="3">Arcade · Match 3 · Clear the Board</text>
+</svg>
