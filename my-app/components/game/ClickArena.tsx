@@ -14,7 +14,7 @@ export interface FloatingGain {
 
 interface ClickArenaProps {
   floatingGains: FloatingGain[];
-  onManualClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onManualClick: (event: React.MouseEvent<HTMLButtonElement>) => boolean;
   goldenClickChance: number;
 }
 
@@ -26,8 +26,12 @@ export function ClickArena({
   const [isPressed, setIsPressed] = useState(false);
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    const accepted = onManualClick(event);
+    if (!accepted) {
+      return;
+    }
+
     setIsPressed(true);
-    onManualClick(event);
     window.setTimeout(() => {
       setIsPressed(false);
     }, 130);

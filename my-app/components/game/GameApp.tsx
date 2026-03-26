@@ -124,6 +124,10 @@ export function GameApp() {
 
   const onArenaClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     const gain = handleManualClick();
+    if (!gain) {
+      return false;
+    }
+
     const bounds = event.currentTarget.getBoundingClientRect();
 
     const x = ((event.clientX - bounds.left) / bounds.width) * 100;
@@ -143,7 +147,7 @@ export function GameApp() {
 
     const now = Date.now();
     if (now - lastFloatingAtRef.current < 220) {
-      return;
+      return true;
     }
     lastFloatingAtRef.current = now;
 
@@ -151,6 +155,8 @@ export function GameApp() {
     window.setTimeout(() => {
       setFloatingGains((prev) => prev.filter((entry) => entry.id !== floatingId));
     }, 900);
+
+    return true;
   };
 
   if (!isHydrated) {

@@ -36,6 +36,8 @@ import type {
 const AUTO_SAVE_INTERVAL_MS = 10_000;
 const TICK_RESOLUTION_SECONDS = 0.1;
 const FRESH_UNLOCK_MS = 12_000;
+const MANUAL_CLICK_LIMIT_PER_SECOND = 8;
+const MANUAL_CLICK_BUCKET_CAPACITY = 4;
 
 function finalizeState(
   state: GameState,
@@ -241,6 +243,10 @@ export function useGameEngine() {
   const nextToastIdRef = useRef(1);
   const bannerTimeoutRef = useRef<number | null>(null);
   const latestStateRef = useRef(state);
+  const manualClickBucketRef = useRef({
+    tokens: MANUAL_CLICK_BUCKET_CAPACITY,
+    lastRefillAt: performance.now(),
+  });
 
   const unlockTrackingReadyRef = useRef(false);
   const previousUnlockedUnitsRef = useRef<Set<UnitId>>(new Set());
@@ -453,6 +459,21 @@ export function useGameEngine() {
   ]);
 
   const handleManualClick = useCallback(() => {
+    const now = performance.now();
+    const bucket = manualClickBucketRef.current;
+    const elapsedSeconds = Math.max(0, (now - bucket.lastRefillAt) / 1000);
+    bucket.tokens = Math.min(
+      MANUAL_CLICK_BUCKET_CAPACITY,
+      bucket.tokens + elapsedSeconds * MANUAL_CLICK_LIMIT_PER_SECOND,
+    );
+    bucket.lastRefillAt = now;
+
+    if (bucket.tokens < 1) {
+      return null;
+    }
+
+    bucket.tokens -= 1;
+
     const current = latestStateRef.current;
     const isGolden =
       current.goldenClickChance > 0 && Math.random() < current.goldenClickChance;
