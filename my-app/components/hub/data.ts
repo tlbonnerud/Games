@@ -48,6 +48,14 @@ export const HUB_GAMES: HubGame[] = [
     href: "/tux-racer/levels.html",
     image: "https://images.unsplash.com/photo-1517292987719-0369a794ec0f?w=1600",
   },
+  {
+    id: 6,
+    title: "VAROOOM 3D",
+    genre: "Racing",
+    description: "Retro 3D-racing fra Game Boy Advance, kjørt direkte i nettleseren.",
+    href: "/varooom-3d",
+    image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1600",
+  },
 ];
 
 export function findGameById(gameId: string | undefined): HubGame | undefined {

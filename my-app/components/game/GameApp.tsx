@@ -19,6 +19,7 @@ import { getUnitCost, getUnitSellRefund } from "@/lib/economy";
 import { describeUpgradeEffect, formatNumber } from "@/lib/format";
 import { getTotalUnitsOwned } from "@/lib/game-state";
 import { getUnlockProgress } from "@/lib/unlocks";
+import type { InspectPayload } from "./inspect";
 
 type UpgradeCategory = "Klikk" | "Produksjon" | "Marked" | "Spesial";
 
@@ -48,6 +49,7 @@ export function GameApp() {
     "farm-right-panel-mode",
     "units",
   );
+  const [inspectPayload, setInspectPayload] = useState<InspectPayload | null>(null);
   const [showRateLimitWarning, setShowRateLimitWarning] = useState(false);
   const floatingIdRef = useRef(1);
   const rateLimitWarningTimeoutRef = useRef<number | null>(null);
@@ -244,10 +246,14 @@ export function GameApp() {
           </div>
 
           <div className="farm-scroll-column">
-            <UnitOverviewPanel units={unitCards} />
+            <UnitOverviewPanel
+              units={unitCards}
+              inspectPayload={inspectPayload}
+              onInspectChange={setInspectPayload}
+            />
           </div>
           <div className="farm-scroll-column farm-control-column">
-            <div className="panel-tab-row farm-side-switch">
+            <div className="panel-tab-row farm-side-switch farm-store-header">
               <button
                 type="button"
                 className={`panel-tab ${rightPanelMode === "units" ? "is-active" : ""}`}
@@ -263,21 +269,27 @@ export function GameApp() {
                 Oppgraderinger
               </button>
             </div>
-            {rightPanelMode === "units" ? (
-              <ShopPanel
-                units={unitCards}
-                coinIconSrc={CURRENCY_ICON.coin}
-                totalUnits={totalUnits}
-                onBuyUnit={buyUnitBatch}
-                onSellUnit={sellUnitBatch}
-              />
-            ) : (
-              <UpgradePanel
-                upgrades={upgradeCards}
-                coinIconSrc={CURRENCY_ICON.coin}
-                onBuyUpgrade={buyUpgrade}
-              />
-            )}
+            <div className="farm-store-body">
+              {rightPanelMode === "units" ? (
+                <ShopPanel
+                  units={unitCards}
+                  coinIconSrc={CURRENCY_ICON.coin}
+                  totalUnits={totalUnits}
+                  onBuyUnit={buyUnitBatch}
+                  onSellUnit={sellUnitBatch}
+                  inspectPayload={inspectPayload}
+                  onInspectChange={setInspectPayload}
+                />
+              ) : (
+                <UpgradePanel
+                  upgrades={upgradeCards}
+                  coinIconSrc={CURRENCY_ICON.coin}
+                  onBuyUpgrade={buyUpgrade}
+                  inspectPayload={inspectPayload}
+                  onInspectChange={setInspectPayload}
+                />
+              )}
+            </div>
           </div>
         </section>
       </main>
