@@ -18,7 +18,7 @@ import {
   PRESTIGE_UNLOCK_EGGS,
   createInitialGameState,
 } from "@/lib/game-state";
-import { loadSave, resetSave, saveGame } from "@/lib/save";
+import { loadSave, loadSaveFromDb, resetSave, saveGame } from "@/lib/save";
 import {
   isUnitUnlocked,
   isUnlockConditionMet,
@@ -69,6 +69,7 @@ function finalizeState(
 function gameReducer(state: GameState, action: GameAction): GameState {
   switch (action.type) {
     case "HYDRATE":
+    case "LOAD_STATE":
       return finalizeState(
         {
           ...action.payload,
@@ -217,13 +218,19 @@ export function useGameEngine() {
     }
 
     return finalizeState(
-      {
-        ...loaded,
-        lastUpdated: Date.now(),
-      },
+      { ...loaded, lastUpdated: Date.now() },
       { recomputeRates: true },
     );
   });
+
+  // Last inn fra DB ved første render (overskriver localStorage hvis DB har nyere data)
+  useEffect(() => {
+    loadSaveFromDb().then((dbState) => {
+      if (!dbState) return;
+      dispatch({ type: "LOAD_STATE", payload: finalizeState({ ...dbState, lastUpdated: Date.now() }, { recomputeRates: true }) });
+    }).catch(() => {});
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const isHydrated = true;
   const [toasts, setToasts] = useState<ToastItem[]>([]);

@@ -5,11 +5,13 @@ CREATE EXTENSION IF NOT EXISTS "pgcrypto";
 
 -- ─── Brukere ──────────────────────────────────────────────────────────────────
 CREATE TABLE IF NOT EXISTS users (
-  userid       UUID        PRIMARY KEY DEFAULT gen_random_uuid(),
-  email        TEXT        UNIQUE NOT NULL,
-  username     TEXT        UNIQUE NOT NULL,
-  password_hash TEXT       NOT NULL,
-  created_at   TIMESTAMPTZ NOT NULL DEFAULT NOW()
+  userid        UUID        PRIMARY KEY DEFAULT gen_random_uuid(),
+  email         TEXT        UNIQUE NOT NULL,
+  username      TEXT        UNIQUE NOT NULL,
+  password_hash TEXT        NOT NULL,
+  is_admin      BOOLEAN     NOT NULL DEFAULT FALSE,
+  last_seen     TIMESTAMPTZ,
+  created_at    TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
 -- ─── Game progression ─────────────────────────────────────────────────────────

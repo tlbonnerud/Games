@@ -117,7 +117,8 @@ export type GameAction =
   | { type: "SELL_UNIT"; unitId: UnitId; refund: number }
   | { type: "BUY_UPGRADE"; upgradeId: UpgradeId; cost: number }
   | { type: "TOGGLE_AUDIO" }
-  | { type: "RESET"; keepAudio: boolean };
+  | { type: "RESET"; keepAudio: boolean }
+  | { type: "LOAD_STATE"; payload: GameState };
 
 export interface ToastItem {
   id: number;

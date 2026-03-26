@@ -9,6 +9,7 @@ const USERNAME_KEY = "hub:username";
 const USERID_KEY = "hub:userid";
 const EMAIL_KEY = "hub:email";
 const ROLLE_KEY = "hub:rolle";
+const ADMIN_KEY = "hub:isAdmin";
 
 export interface HubAuthState {
   isLoggedIn: boolean;
@@ -16,6 +17,7 @@ export interface HubAuthState {
   email: string;
   userid: string;
   rolle: string;
+  is_admin: boolean;
 }
 
 const DEFAULT_AUTH_STATE: HubAuthState = {
@@ -24,6 +26,7 @@ const DEFAULT_AUTH_STATE: HubAuthState = {
   email: "",
   userid: "",
   rolle: "",
+  is_admin: false,
 };
 
 function emitAuthChange() {
@@ -39,15 +42,17 @@ export function readAuthState(): HubAuthState {
     email: window.localStorage.getItem(EMAIL_KEY) ?? "",
     userid: window.localStorage.getItem(USERID_KEY) ?? "",
     rolle: window.localStorage.getItem(ROLLE_KEY) ?? "",
+    is_admin: window.localStorage.getItem(ADMIN_KEY) === "true",
   };
 }
 
-function writeAuthState(user: { username: string; email: string; userid: string }) {
+function writeAuthState(user: { username: string; email: string; userid: string; is_admin?: boolean }) {
   window.localStorage.setItem(LOGIN_STATE_KEY, "true");
   window.localStorage.setItem(USERNAME_KEY, user.username);
   window.localStorage.setItem(EMAIL_KEY, user.email);
   window.localStorage.setItem(USERID_KEY, user.userid);
   window.localStorage.removeItem(ROLLE_KEY);
+  window.localStorage.setItem(ADMIN_KEY, user.is_admin ? "true" : "false");
   emitAuthChange();
 }
 

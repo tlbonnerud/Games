@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Press_Start_2P, VT323 } from "next/font/google";
 import { AuthProvider } from "@/context/AuthContext";
+import { PingProvider } from "@/components/hub/PingProvider";
 import "./globals.css";
 
 const pixelHeading = Press_Start_2P({
@@ -28,7 +29,10 @@ export default function RootLayout({
   return (
     <html lang="no" className={`${pixelHeading.variable} ${pixelBody.variable}`}>
       <body>
-        <AuthProvider>{children}</AuthProvider>
+        <AuthProvider>
+          <PingProvider />
+          {children}
+        </AuthProvider>
       </body>
     </html>
   );

@@ -6,13 +6,8 @@ import { useEffect, useState } from "react";
 import { AUTH_CHANGE_EVENT, HubAuthState, readAuthState, syncAuthFromCookie } from "@/components/hub/auth";
 
 function linkClasses(isActive: boolean) {
-  const baseClasses =
-    "rounded-lg px-4 py-2 text-sm transition-colors md:text-base";
-
-  if (isActive) {
-    return `${baseClasses} bg-blue-600 text-white`;
-  }
-
+  const baseClasses = "rounded-lg px-4 py-2 text-sm transition-colors md:text-base";
+  if (isActive) return `${baseClasses} bg-blue-600 text-white`;
   return `${baseClasses} text-gray-400 hover:bg-gray-800 hover:text-white`;
 }
 
@@ -24,15 +19,14 @@ export function HubHeader() {
     email: "",
     userid: "",
     rolle: "",
+    is_admin: false,
   });
 
   useEffect(() => {
     const syncAuthState = () => setAuthState(readAuthState());
-
     syncAuthFromCookie().then(syncAuthState);
     window.addEventListener("storage", syncAuthState);
     window.addEventListener(AUTH_CHANGE_EVENT, syncAuthState);
-
     return () => {
       window.removeEventListener("storage", syncAuthState);
       window.removeEventListener(AUTH_CHANGE_EVENT, syncAuthState);
@@ -41,6 +35,7 @@ export function HubHeader() {
 
   const activeHome = pathname === "/";
   const activeLeaderboard = pathname.startsWith("/leaderboard");
+  const activeAdmin = pathname.startsWith("/admin");
   const profileLabel = authState.username.trim() || "Profile";
 
   return (
@@ -55,12 +50,11 @@ export function HubHeader() {
           </Link>
 
           <div className="hidden items-center gap-2 md:flex">
-            <Link href="/" className={linkClasses(activeHome)}>
-              Home
-            </Link>
-            <Link href="/leaderboard" className={linkClasses(activeLeaderboard)}>
-              Leaderboard
-            </Link>
+            <Link href="/" className={linkClasses(activeHome)}>Home</Link>
+            <Link href="/leaderboard" className={linkClasses(activeLeaderboard)}>Leaderboard</Link>
+            {authState.is_admin && (
+              <Link href="/admin" className={linkClasses(activeAdmin)}>Admin</Link>
+            )}
           </div>
 
           {authState.isLoggedIn ? (
@@ -81,12 +75,11 @@ export function HubHeader() {
         </div>
 
         <nav className="grid grid-cols-2 gap-2 md:hidden">
-          <Link href="/" className={linkClasses(activeHome)}>
-            Home
-          </Link>
-          <Link href="/leaderboard" className={linkClasses(activeLeaderboard)}>
-            Leaderboard
-          </Link>
+          <Link href="/" className={linkClasses(activeHome)}>Home</Link>
+          <Link href="/leaderboard" className={linkClasses(activeLeaderboard)}>Leaderboard</Link>
+          {authState.is_admin && (
+            <Link href="/admin" className={linkClasses(activeAdmin)}>Admin</Link>
+          )}
         </nav>
       </div>
     </header>

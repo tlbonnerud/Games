@@ -154,6 +154,52 @@ export function saveGame(state: GameState): void {
   } catch {
     // Ignore quota or serialization issues gracefully.
   }
+
+  // Lagre til database i bakgrunnen hvis innlogget
+  saveGameToDb(state).catch(() => {});
+}
+
+export async function saveGameToDb(state: GameState): Promise<void> {
+  try {
+    await fetch("/api/progress", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        game_id: "chicken-farm",
+        score: Math.floor(state.totalCoinsEarned),
+        metadata: {
+          coins: state.coins,
+          totalEggsEarned: state.totalEggsEarned,
+          totalCoinsEarned: state.totalCoinsEarned,
+          eggsPerSecond: state.eggsPerSecond,
+          coinsPerSecond: state.coinsPerSecond,
+          unitsOwned: state.unitsOwned,
+          purchasedUpgrades: state.purchasedUpgrades,
+          achievementsUnlocked: state.achievementsUnlocked,
+          prestigePoints: state.prestigePoints,
+          playtimeSeconds: state.playtimeSeconds,
+          saveVersion: state.saveVersion,
+        },
+      }),
+    });
+  } catch {
+    // Ignorer nettverksfeil – localStorage er alltid backup
+  }
+}
+
+export async function loadSaveFromDb(): Promise<GameState | null> {
+  try {
+    const res = await fetch("/api/progress");
+    if (!res.ok) return null;
+    const { progress } = await res.json();
+    const entry = progress?.find((p: { game_id: string }) => p.game_id === "chicken-farm");
+    if (!entry?.metadata) return null;
+    // Bruk eksisterende loadSave-logikk ved å serialisere til localStorage og laste derfra
+    window.localStorage.setItem(SAVE_KEY, JSON.stringify(entry.metadata));
+    return loadSave();
+  } catch {
+    return null;
+  }
 }
 
 export function resetSave(): void {
