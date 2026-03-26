@@ -1,5 +1,10 @@
 import { SnakeGame } from "@/components/snake/SnakeGame";
+import { GameGate } from "@/components/hub/GameGate";
 
 export default function SnakePage() {
-  return <SnakeGame />;
+  return (
+    <GameGate>
+      <SnakeGame />
+    </GameGate>
+  );
 }
