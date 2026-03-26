@@ -29,6 +29,13 @@ const GAMES = [
     badge: "Classic",
     previewClass: "preview-tetris",
   },
+  {
+    href: "/tux-racer/levels.html",
+    title: "Tux Racer",
+    description: "Klassisk pingovin-racingspill i nettleseren. Velg blant 20 baner og tre ulike miljøer.",
+    badge: "Racing",
+    previewClass: "preview-tux",
+  },
 ] as const;
 
 export function GameHub() {

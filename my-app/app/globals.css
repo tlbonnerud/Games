@@ -817,6 +817,33 @@ body::after {
   animation: snake-preview-slither 5.4s ease-in-out infinite;
 }
 
+.preview-tux {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 70% 30%, rgba(91, 196, 245, 0.25), transparent 40%),
+    linear-gradient(180deg, #0a1520, #060d14);
+}
+
+.preview-tux::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(170deg, rgba(91, 196, 245, 0.08) 0 2px, transparent 2px 24px);
+  animation: tetris-preview-scan 8s linear infinite;
+}
+
+.preview-tux::after {
+  content: "🐧";
+  position: absolute;
+  font-size: 2.6rem;
+  bottom: 12%;
+  left: 50%;
+  transform: translateX(-50%);
+  filter: drop-shadow(0 0 10px rgba(91, 196, 245, 0.7));
+}
+
 .preview-tetris {
   position: relative;
   overflow: hidden;

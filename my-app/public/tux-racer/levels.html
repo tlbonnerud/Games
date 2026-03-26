@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tux Racer – Velg bane</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0a0a0a;
+      color: #fff;
+      font-family: 'Press Start 2P', monospace;
+      min-height: 100vh;
+      padding: 2rem 1rem 3rem;
+    }
+
+    .back-link {
+      display: inline-block;
+      color: #5bc4f5;
+      text-decoration: none;
+      font-size: 0.55rem;
+      margin-bottom: 2rem;
+      border: 1px solid #5bc4f5;
+      padding: 0.5rem 0.8rem;
+      transition: background 0.15s;
+    }
+    .back-link:hover { background: #1a2a35; }
+
+    h1 {
+      text-align: center;
+      color: #5bc4f5;
+      font-size: clamp(0.7rem, 2.5vw, 1.1rem);
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.05em;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #888;
+      font-size: clamp(0.5rem, 1.5vw, 0.65rem);
+      margin-bottom: 2.5rem;
+    }
+
+    .env-row {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .env-btn {
+      background: #111;
+      border: 2px solid #444;
+      color: #aaa;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.5rem;
+      padding: 0.6rem 1rem;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .env-btn:hover { border-color: #5bc4f5; color: #fff; }
+    .env-btn.active { border-color: #5bc4f5; color: #5bc4f5; background: #0d1e2a; }
+
+    .section-title {
+      font-size: 0.5rem;
+      color: #666;
+      text-align: center;
+      margin-bottom: 1rem;
+      letter-spacing: 0.1em;
+    }
+
+    .levels-section { margin-bottom: 2.5rem; }
+
+    .levels-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 0.75rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .level-card {
+      display: block;
+      background: #111;
+      border: 2px solid #333;
+      padding: 1rem;
+      text-decoration: none;
+      color: #fff;
+      transition: all 0.15s;
+      cursor: pointer;
+    }
+    .level-card:hover {
+      border-color: #5bc4f5;
+      background: #0d1e2a;
+    }
+
+    .level-name {
+      font-size: clamp(0.4rem, 1.2vw, 0.55rem);
+      color: #5bc4f5;
+      display: block;
+      margin-bottom: 0.6rem;
+      line-height: 1.6;
+    }
+
+    .level-meta {
+      font-size: 0.4rem;
+      color: #666;
+      line-height: 1.8;
+    }
+
+    .difficulty {
+      display: inline-block;
+      font-size: 0.38rem;
+      padding: 0.2rem 0.4rem;
+      margin-top: 0.5rem;
+    }
+    .diff-easy   { border: 1px solid #4caf50; color: #4caf50; }
+    .diff-medium { border: 1px solid #ff9800; color: #ff9800; }
+    .diff-hard   { border: 1px solid #f44336; color: #f44336; }
+
+    .tux-header {
+      text-align: center;
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <a href="/" class="back-link">&#8592; TILBAKE TIL ARKADE</a>
+
+  <div class="tux-header">🐧</div>
+  <h1>TUX RACER</h1>
+  <p class="subtitle">Velg en bane og kjør!</p>
+
+  <div class="env-row">
+    <button class="env-btn active" data-env="sunny">☀️ Solrik</button>
+    <button class="env-btn" data-env="cloudy">☁️ Overskyet</button>
+    <button class="env-btn" data-env="night">🌙 Natt</button>
+  </div>
+
+  <div class="levels-section">
+    <p class="section-title">── NYBEGYNNER ──</p>
+    <div class="levels-grid" id="easy-grid"></div>
+  </div>
+
+  <div class="levels-section">
+    <p class="section-title">── MIDDELS ──</p>
+    <div class="levels-grid" id="medium-grid"></div>
+  </div>
+
+  <div class="levels-section">
+    <p class="section-title">── VANSKELIG ──</p>
+    <div class="levels-grid" id="hard-grid"></div>
+  </div>
+
+  <script>
+    const courses = [
+      { key: "bunny-hill",           name: "Bunny Hill",             length: 520,  difficulty: "easy" },
+      { key: "twisty-slope",         name: "Twisty Slope",           length: 520,  difficulty: "easy" },
+      { key: "bumpy-ride",           name: "Bumpy Ride",             length: 604,  difficulty: "easy" },
+      { key: "frozen-river",         name: "Frozen River",           length: 800,  difficulty: "medium" },
+      { key: "milos-castle",         name: "Milos Castle",           length: 800,  difficulty: "medium" },
+      { key: "quiet-river",          name: "Quiet River",            length: 2000, difficulty: "medium" },
+      { key: "this-means-something", name: "This Means Something",   length: 800,  difficulty: "medium" },
+      { key: "path-of-daggers",      name: "Path of Daggers",        length: 800,  difficulty: "medium" },
+      { key: "holy-grail",           name: "Holy Grail",             length: 1500, difficulty: "medium" },
+      { key: "challenge-one",        name: "Challenge One",          length: 1500, difficulty: "hard" },
+      { key: "chinese-wall",         name: "Chinese Wall",           length: 1500, difficulty: "hard" },
+      { key: "downhill-fear",        name: "Downhill Fear",          length: 1800, difficulty: "hard" },
+      { key: "in-search-of-vodka",   name: "In Search of Vodka",     length: 2500, difficulty: "hard" },
+      { key: "penguins-cant-fly",    name: "Penguins Can't Fly",     length: 2500, difficulty: "hard" },
+      { key: "hippo-run",            name: "Hippo Run",              length: 3500, difficulty: "hard" },
+      { key: "explore-mountains",    name: "Explore Mountains",      length: 2000, difficulty: "hard" },
+      { key: "frozen-lakes",         name: "Frozen Lakes",           length: 2000, difficulty: "hard" },
+      { key: "secret-valleys",       name: "Secret Valleys",         length: 2000, difficulty: "hard" },
+      { key: "tux-at-home",          name: "Tux at Home",            length: 2000, difficulty: "hard" },
+      { key: "wild-mountains",       name: "Wild Mountains",         length: 2000, difficulty: "hard" },
+    ];
+
+    const diffLabels = { easy: "NYBEGYNNER", medium: "MIDDELS", hard: "VANSKELIG" };
+    const diffClass  = { easy: "diff-easy", medium: "diff-medium", hard: "diff-hard" };
+
+    let selectedEnv = "sunny";
+
+    function formatLength(m) {
+      return m >= 1000 ? (m / 1000).toFixed(1) + " km" : m + " m";
+    }
+
+    function buildCard(course) {
+      const card = document.createElement("a");
+      card.className = "level-card";
+      card.href = `index.html?course=${course.key}&environment=${selectedEnv}`;
+      card.innerHTML = `
+        <span class="level-name">${course.name.toUpperCase()}</span>
+        <div class="level-meta">Lengde: ${formatLength(course.length)}</div>
+        <span class="difficulty ${diffClass[course.difficulty]}">${diffLabels[course.difficulty]}</span>
+      `;
+      return card;
+    }
+
+    function renderGrids() {
+      const easyGrid   = document.getElementById("easy-grid");
+      const mediumGrid = document.getElementById("medium-grid");
+      const hardGrid   = document.getElementById("hard-grid");
+      easyGrid.innerHTML = mediumGrid.innerHTML = hardGrid.innerHTML = "";
+
+      courses.forEach(course => {
+        const card = buildCard(course);
+        if (course.difficulty === "easy")   easyGrid.appendChild(card);
+        else if (course.difficulty === "medium") mediumGrid.appendChild(card);
+        else hardGrid.appendChild(card);
+      });
+    }
+
+    document.querySelectorAll(".env-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".env-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        selectedEnv = btn.dataset.env;
+        renderGrids();
+      });
+    });
+
+    renderGrids();
+  </script>
+</body>
+</html>
