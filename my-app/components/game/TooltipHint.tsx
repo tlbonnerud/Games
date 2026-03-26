@@ -1,3 +1,4 @@
+import { useId, useState } from "react";
 import type { ReactNode } from "react";
 
 interface TooltipHintProps {
@@ -6,17 +7,29 @@ interface TooltipHintProps {
 }
 
 export function TooltipHint({ label, children }: TooltipHintProps) {
+  const [open, setOpen] = useState(false);
+  const tooltipId = useId();
+
   return (
-    <span className="tooltip-root">
-      <span
+    <span
+      className="tooltip-root"
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+    >
+      <button
         className="tooltip-trigger"
-        role="img"
+        type="button"
         aria-label={label}
-        tabIndex={0}
+        aria-expanded={open}
+        aria-controls={tooltipId}
+        onClick={() => setOpen((prev) => !prev)}
+        onBlur={() => setOpen(false)}
       >
         ?
+      </button>
+      <span id={tooltipId} className={`tooltip-content ${open ? "is-open" : ""}`}>
+        {children}
       </span>
-      <span className="tooltip-content">{children}</span>
     </span>
   );
 }

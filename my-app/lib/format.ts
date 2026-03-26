@@ -59,9 +59,9 @@ export function describeUpgradeEffect(effect: UpgradeEffect): string {
     case "unit_mult":
       return `${formatUnitLabel(effect.unitId)} x${effect.multiplier}`;
     case "coin_mult":
-      return `Coins per egg x${effect.multiplier}`;
+      return `Mynter per egg x${effect.multiplier}`;
     case "golden_click":
-      return `Gyldent klikk +${formatPercent(effect.chance)} sjanse, burst x${effect.multiplier}`;
+      return `Gyldent klikk +${formatPercent(effect.chance)} sjanse, boost x${effect.multiplier}`;
     default:
       return "Spesiell effekt";
   }

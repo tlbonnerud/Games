@@ -9,14 +9,17 @@ export function ToastStack({ toasts, onDismiss }: ToastStackProps) {
   return (
     <aside className="toast-stack" aria-live="polite" aria-label="Varsler">
       {toasts.map((toast) => (
-        <button
-          key={toast.id}
-          type="button"
-          className={`toast-item kind-${toast.kind}`}
-          onClick={() => onDismiss(toast.id)}
-        >
-          {toast.message}
-        </button>
+        <div key={toast.id} className={`toast-item kind-${toast.kind}`}>
+          <p>{toast.message}</p>
+          <button
+            type="button"
+            className="toast-dismiss"
+            onClick={() => onDismiss(toast.id)}
+            aria-label="Lukk varsel"
+          >
+            x
+          </button>
+        </div>
       ))}
     </aside>
   );

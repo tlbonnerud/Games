@@ -56,8 +56,8 @@ export function EggMarketPanel({
         </button>
       </div>
 
-      <p className="pixel-subtle mt-3 text-sm">
-        Rate: 1 egg = {CONVERSION_RATE} coins x {formatNumber(coinMultiplier)}.
+      <p className="pixel-subtle mt-3">
+        Markedsrate: 1 egg = {CONVERSION_RATE} coins x bonus {formatNumber(coinMultiplier)}.
       </p>
     </PixelPanel>
   );
