@@ -2,6 +2,7 @@
 
 import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { HubHeader } from "@/components/hub/HubHeader";
 import { loginWithCredentials } from "@/components/hub/auth";
 
@@ -88,6 +89,13 @@ export function LoginPage() {
               {loading ? "Logger inn..." : "Login"}
             </button>
           </form>
+
+          <p className="mt-6 text-center text-sm text-gray-400">
+            Ny bruker?{" "}
+            <Link href="/signup" className="text-blue-400 hover:text-blue-300 underline">
+              Opprett konto
+            </Link>
+          </p>
         </div>
       </section>
     </main>

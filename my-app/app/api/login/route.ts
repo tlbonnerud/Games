@@ -12,7 +12,7 @@ export async function POST(req: NextRequest) {
 
   try {
     const result = await pool.query(
-      "SELECT userid, email, password_hash, fornavn, etternavn, rolle FROM users WHERE email = $1",
+      "SELECT userid, email, username, password_hash FROM users WHERE email = $1",
       [email.toLowerCase().trim()]
     );
 
@@ -26,21 +26,9 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Feil e-post eller passord" }, { status: 401 });
     }
 
-    await setAuthCookie({
-      userid: user.userid,
-      email: user.email,
-      fornavn: user.fornavn,
-      etternavn: user.etternavn,
-      rolle: user.rolle,
-    });
+    await setAuthCookie({ userid: user.userid, email: user.email, username: user.username });
 
-    return NextResponse.json({
-      userid: user.userid,
-      email: user.email,
-      fornavn: user.fornavn,
-      etternavn: user.etternavn,
-      rolle: user.rolle,
-    });
+    return NextResponse.json({ userid: user.userid, email: user.email, username: user.username });
   } catch (err) {
     console.error("Login error:", err);
     return NextResponse.json({ error: "Serverfeil" }, { status: 500 });

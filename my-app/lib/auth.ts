@@ -7,9 +7,7 @@ const COOKIE = "games_token";
 export type SessionUser = {
   userid: string;
   email: string;
-  fornavn: string | null;
-  etternavn: string | null;
-  rolle: string;
+  username: string;
 };
 
 export function signToken(user: SessionUser): string {

@@ -42,13 +42,12 @@ export function readAuthState(): HubAuthState {
   };
 }
 
-function writeAuthState(user: { fornavn: string | null; email: string; userid: string; rolle: string }) {
-  const username = user.fornavn?.trim() || user.email;
+function writeAuthState(user: { username: string; email: string; userid: string }) {
   window.localStorage.setItem(LOGIN_STATE_KEY, "true");
-  window.localStorage.setItem(USERNAME_KEY, username);
+  window.localStorage.setItem(USERNAME_KEY, user.username);
   window.localStorage.setItem(EMAIL_KEY, user.email);
   window.localStorage.setItem(USERID_KEY, user.userid);
-  window.localStorage.setItem(ROLLE_KEY, user.rolle);
+  window.localStorage.removeItem(ROLLE_KEY);
   emitAuthChange();
 }
 

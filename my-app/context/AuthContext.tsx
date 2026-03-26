@@ -5,9 +5,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 type User = {
   userid: string;
   email: string;
-  fornavn: string | null;
-  etternavn: string | null;
-  rolle: string;
+  username: string;
 };
 
 type AuthCtx = {
