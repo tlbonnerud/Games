@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Press_Start_2P, VT323 } from "next/font/google";
+import { AuthProvider } from "@/context/AuthContext";
 import "./globals.css";
 
 const pixelHeading = Press_Start_2P({
@@ -15,8 +16,8 @@ const pixelBody = VT323({
 });
 
 export const metadata: Metadata = {
-  title: "Pixel Chicken Farm Factory",
-  description: "Incremental pixel-art clicker med chicken factory-progresjon.",
+  title: "Game Hub",
+  description: "En samling browser-spill.",
 };
 
 export default function RootLayout({
@@ -26,7 +27,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="no" className={`${pixelHeading.variable} ${pixelBody.variable}`}>
-      <body>{children}</body>
+      <body>
+        <AuthProvider>{children}</AuthProvider>
+      </body>
     </html>
   );
 }

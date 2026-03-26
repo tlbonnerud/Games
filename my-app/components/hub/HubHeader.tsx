@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { AUTH_CHANGE_EVENT, HubAuthState, readAuthState } from "@/components/hub/auth";
+import { AUTH_CHANGE_EVENT, HubAuthState, readAuthState, syncAuthFromCookie } from "@/components/hub/auth";
 
 function linkClasses(isActive: boolean) {
   const baseClasses =
@@ -21,12 +21,15 @@ export function HubHeader() {
   const [authState, setAuthState] = useState<HubAuthState>({
     isLoggedIn: false,
     username: "",
+    email: "",
+    userid: "",
+    rolle: "",
   });
 
   useEffect(() => {
     const syncAuthState = () => setAuthState(readAuthState());
 
-    syncAuthState();
+    syncAuthFromCookie().then(syncAuthState);
     window.addEventListener("storage", syncAuthState);
     window.addEventListener(AUTH_CHANGE_EVENT, syncAuthState);
 

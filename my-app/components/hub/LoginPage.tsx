@@ -3,7 +3,7 @@
 import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 import { HubHeader } from "@/components/hub/HubHeader";
-import { loginWithUsername } from "@/components/hub/auth";
+import { loginWithCredentials } from "@/components/hub/auth";
 
 const MODERN_FONT = '"Segoe UI", "Helvetica Neue", Arial, sans-serif';
 
@@ -12,18 +12,20 @@ export function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleLogin = (event: FormEvent<HTMLFormElement>) => {
+  const handleLogin = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    const normalizedUsername = username.trim();
-    if (!normalizedUsername || !password) {
-      setErrorMessage("Username og passord må fylles ut.");
-      return;
+    setErrorMessage("");
+    setLoading(true);
+    try {
+      await loginWithCredentials(username.trim(), password);
+      router.push("/");
+    } catch (err) {
+      setErrorMessage(err instanceof Error ? err.message : "Noe gikk galt");
+    } finally {
+      setLoading(false);
     }
-
-    loginWithUsername(normalizedUsername);
-    router.push("/");
   };
 
   return (
@@ -46,13 +48,13 @@ export function LoginPage() {
           <form onSubmit={handleLogin} className="space-y-6">
             <div className="space-y-2">
               <label htmlFor="username" className="block text-sm font-medium text-white">
-                Username
+                E-post
               </label>
               <input
                 id="username"
-                type="text"
-                placeholder="Enter your username"
-                autoComplete="username"
+                type="email"
+                placeholder="din@epost.no"
+                autoComplete="email"
                 value={username}
                 onChange={(event) => setUsername(event.target.value)}
                 className="w-full rounded-md border border-gray-600 bg-gray-700/50 px-3 py-3 text-white placeholder:text-gray-400 focus:border-blue-500 focus:outline-none"
@@ -80,15 +82,12 @@ export function LoginPage() {
 
             <button
               type="submit"
-              className="w-full rounded-lg bg-blue-600 py-3 text-lg font-medium text-white transition-colors hover:bg-blue-700"
+              disabled={loading}
+              className="w-full rounded-lg bg-blue-600 py-3 text-lg font-medium text-white transition-colors hover:bg-blue-700 disabled:opacity-50"
             >
-              Login
+              {loading ? "Logger inn..." : "Login"}
             </button>
           </form>
-
-          <p className="mt-6 text-center text-sm text-gray-400">
-            Demo-login: fyll inn et hvilket som helst brukernavn og passord.
-          </p>
         </div>
       </section>
     </main>
