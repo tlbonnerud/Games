@@ -1,5 +1,5 @@
-import { GameApp } from "@/components/game/GameApp";
+import { GameHub } from "@/components/hub/GameHub";
 
 export default function Home() {
-  return <GameApp />;
+  return <GameHub />;
 }
