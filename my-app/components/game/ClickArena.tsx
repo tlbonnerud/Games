@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { formatNumber, formatRate } from "@/lib/format";
 
 export interface FloatingGain {
   id: number;
@@ -16,12 +17,28 @@ interface ClickArenaProps {
   floatingGains: FloatingGain[];
   onManualClick: (event: React.MouseEvent<HTMLButtonElement>) => boolean;
   goldenClickChance: number;
+  eggs: number;
+  coins: number;
+  clickPower: number;
+  eggsPerSecond: number;
+  coinsPerSecond: number;
+  eggIconSrc: string;
+  coinIconSrc: string;
+  showRateLimitWarning: boolean;
 }
 
 export function ClickArena({
   floatingGains,
   onManualClick,
   goldenClickChance,
+  eggs,
+  coins,
+  clickPower,
+  eggsPerSecond,
+  coinsPerSecond,
+  eggIconSrc,
+  coinIconSrc,
+  showRateLimitWarning,
 }: ClickArenaProps) {
   const [isPressed, setIsPressed] = useState(false);
 
@@ -40,12 +57,37 @@ export function ClickArena({
   return (
     <section className="pixel-panel click-panel">
       <div className="mb-4 flex items-center justify-between gap-3">
-        <h2 className="pixel-heading text-[0.92rem] uppercase tracking-[0.08em]">
+        <h2 className="pixel-heading text-[1.06rem] uppercase tracking-[0.08em]">
           Gårdsplass
         </h2>
-        <span className="pixel-subtle text-sm">
+        <span className="pixel-subtle">
           Gyldent klikk: {Math.round(goldenClickChance * 100)}%
         </span>
+      </div>
+
+      <div className="arena-metrics">
+        <p className="arena-metrics-main with-inline-icon">
+          <Image src={eggIconSrc} alt="" width={22} height={22} aria-hidden />
+          {formatNumber(eggs)} egg
+        </p>
+        <div className="arena-metrics-secondary">
+          <span className="with-inline-icon">
+            <Image src={coinIconSrc} alt="" width={17} height={17} aria-hidden />
+            {formatNumber(coins)} coins
+          </span>
+          <span className="with-inline-icon">
+            <Image src={eggIconSrc} alt="" width={17} height={17} aria-hidden />
+            {formatRate(eggsPerSecond)} egg/s
+          </span>
+          <span className="with-inline-icon">
+            <Image src={coinIconSrc} alt="" width={17} height={17} aria-hidden />
+            {formatRate(coinsPerSecond)} coins/s
+          </span>
+          <span>Klikkstyrke: {formatNumber(clickPower)}</span>
+        </div>
+        {showRateLimitWarning ? (
+          <p className="arena-warning">For raske klikk. Prøv et roligere tempo.</p>
+        ) : null}
       </div>
 
       <div className="click-arena">
@@ -93,8 +135,8 @@ export function ClickArena({
         ))}
       </div>
 
-      <p className="pixel-subtle mt-4 text-sm">
-        Klikk på kyllingen for å samle egg manuelt. Kjøp units for full automasjon.
+      <p className="pixel-subtle mt-4">
+        Klikk på kyllingen for å samle egg manuelt. Kjøp enheter for full automasjon.
       </p>
     </section>
   );

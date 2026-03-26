@@ -7,5 +7,9 @@ export function UnlockBanner({ message }: UnlockBannerProps) {
     return null;
   }
 
-  return <div className="unlock-banner">{message}</div>;
+  return (
+    <div className="unlock-banner" role="status" aria-live="polite">
+      {message}
+    </div>
+  );
 }

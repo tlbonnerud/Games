@@ -3,15 +3,21 @@ import type { UpgradeDefinition, UpgradeId } from "@/types/game";
 export const UPGRADE_IDS: UpgradeId[] = [
   "firm_grip_gloves",
   "steel_beak_drills",
+  "precision_claw",
   "sunrise_shift",
+  "warehouse_automation",
   "coop_insulation",
   "quality_feed",
+  "feed_cart_turbo",
   "sorting_algorithm",
   "greased_chains",
   "barn_union_bonus",
+  "barn_solar_grid",
   "market_contracts",
+  "broker_network",
   "export_license",
   "quantum_hatchery",
+  "golden_yolk_refinery",
   "golden_yolk_protocol",
 ];
 
@@ -49,6 +55,22 @@ export const UPGRADE_DEFINITIONS: UpgradeDefinition[] = [
     },
   },
   {
+    id: "precision_claw",
+    name: "Presisjonsklo",
+    description: "Finjustert timing gir langt hardere manuelle klikk.",
+    cost: 900,
+    rarity: "rare",
+    unlock: {
+      type: "total_clicks",
+      value: 120,
+      label: "Nå 120 klikk",
+    },
+    effect: {
+      type: "click_mult",
+      multiplier: 2.6,
+    },
+  },
+  {
     id: "sunrise_shift",
     name: "Soloppgangsskift",
     description: "Morgenskift gir høyere totalproduksjon.",
@@ -63,6 +85,23 @@ export const UPGRADE_DEFINITIONS: UpgradeDefinition[] = [
     effect: {
       type: "global_prod_mult",
       multiplier: 1.25,
+    },
+  },
+  {
+    id: "warehouse_automation",
+    name: "Lager-automasjon",
+    description: "Mer flyt i lageret øker total produksjon.",
+    cost: 3400,
+    rarity: "rare",
+    unlock: {
+      type: "units_owned",
+      value: 2,
+      unitId: "feed_cart",
+      label: "Eie 2 fôrvogner",
+    },
+    effect: {
+      type: "global_prod_mult",
+      multiplier: 1.3,
     },
   },
   {
@@ -99,6 +138,24 @@ export const UPGRADE_DEFINITIONS: UpgradeDefinition[] = [
       type: "unit_mult",
       unitId: "chicken",
       multiplier: 1.8,
+    },
+  },
+  {
+    id: "feed_cart_turbo",
+    name: "Forvogn turbo",
+    description: "Fôrvogner kjører tettere runder med mindre ventetid.",
+    cost: 5200,
+    rarity: "rare",
+    unlock: {
+      type: "units_owned",
+      value: 4,
+      unitId: "feed_cart",
+      label: "Eie 4 fôrvogner",
+    },
+    effect: {
+      type: "unit_mult",
+      unitId: "feed_cart",
+      multiplier: 1.85,
     },
   },
   {
@@ -155,6 +212,23 @@ export const UPGRADE_DEFINITIONS: UpgradeDefinition[] = [
     },
   },
   {
+    id: "barn_solar_grid",
+    name: "Låve-solnett",
+    description: "Stabil energi i låvekomplekset gir jevn vekst.",
+    cost: 26000,
+    rarity: "epic",
+    unlock: {
+      type: "units_owned",
+      value: 2,
+      unitId: "mechanical_harvester",
+      label: "Eie 2 mekaniske høstere",
+    },
+    effect: {
+      type: "global_prod_mult",
+      multiplier: 1.7,
+    },
+  },
+  {
     id: "market_contracts",
     name: "Markedskontrakter",
     description: "Bedre salgsvilkår gir flere coins per egg.",
@@ -168,6 +242,22 @@ export const UPGRADE_DEFINITIONS: UpgradeDefinition[] = [
     effect: {
       type: "coin_mult",
       multiplier: 1.5,
+    },
+  },
+  {
+    id: "broker_network",
+    name: "Meglernettverk",
+    description: "Forhandler direkte med større markeder for høyere coin-rate.",
+    cost: 7600,
+    rarity: "rare",
+    unlock: {
+      type: "total_coins",
+      value: 1800,
+      label: "Tjen 1 800 coins totalt",
+    },
+    effect: {
+      type: "coin_mult",
+      multiplier: 1.75,
     },
   },
   {
@@ -200,6 +290,23 @@ export const UPGRADE_DEFINITIONS: UpgradeDefinition[] = [
     effect: {
       type: "global_prod_mult",
       multiplier: 2,
+    },
+  },
+  {
+    id: "golden_yolk_refinery",
+    name: "Gylden plomme-raffineri",
+    description: "Omkonstruert kjede som gjør gyldne klikk langt vanligere.",
+    cost: 61000,
+    rarity: "epic",
+    unlock: {
+      type: "total_eggs",
+      value: 62000,
+      label: "Samle 62 000 egg totalt",
+    },
+    effect: {
+      type: "golden_click",
+      chance: 0.05,
+      multiplier: 2.2,
     },
   },
   {

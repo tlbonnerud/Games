@@ -11,15 +11,21 @@ export type UnitId =
 export type UpgradeId =
   | "firm_grip_gloves"
   | "steel_beak_drills"
+  | "precision_claw"
   | "sunrise_shift"
+  | "warehouse_automation"
   | "coop_insulation"
   | "quality_feed"
+  | "feed_cart_turbo"
   | "sorting_algorithm"
   | "greased_chains"
   | "barn_union_bonus"
+  | "barn_solar_grid"
   | "market_contracts"
+  | "broker_network"
   | "export_license"
   | "quantum_hatchery"
+  | "golden_yolk_refinery"
   | "golden_yolk_protocol";
 
 export type AchievementId =

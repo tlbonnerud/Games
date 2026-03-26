@@ -211,28 +211,10 @@ function removeFreshMarker<T extends string>(
 }
 
 export function useGameEngine() {
-  const [state, dispatch] = useReducer(gameReducer, undefined, () => {
-    const loaded = loadSave();
-    if (!loaded) {
-      return createInitialGameState();
-    }
-
-    return finalizeState(
-      { ...loaded, lastUpdated: Date.now() },
-      { recomputeRates: true },
-    );
-  });
-
-  // Last inn fra DB ved første render (overskriver localStorage hvis DB har nyere data)
-  useEffect(() => {
-    loadSaveFromDb().then((dbState) => {
-      if (!dbState) return;
-      dispatch({ type: "LOAD_STATE", payload: finalizeState({ ...dbState, lastUpdated: Date.now() }, { recomputeRates: true }) });
-    }).catch(() => {});
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const isHydrated = true;
+  const [state, dispatch] = useReducer(gameReducer, undefined, () =>
+    createInitialGameState(),
+  );
+  const [isHydrated, setIsHydrated] = useState(false);
   const [toasts, setToasts] = useState<ToastItem[]>([]);
   const [bannerMessage, setBannerMessage] = useState<string | null>(null);
   const [freshUnitUnlocks, setFreshUnitUnlocks] = useState<
@@ -259,6 +241,21 @@ export function useGameEngine() {
   const previousUnlockedUnitsRef = useRef<Set<UnitId>>(new Set());
   const previousUnlockedUpgradesRef = useRef<Set<UpgradeId>>(new Set());
   const previousUnlockedAchievementsRef = useRef<Set<AchievementId>>(new Set());
+
+  useEffect(() => {
+    const loaded = loadSave();
+    if (loaded) {
+      dispatch({ type: "HYDRATE", payload: loaded });
+    }
+    setIsHydrated(true);
+
+    // Last inn fra DB i bakgrunnen (overskriver localStorage hvis DB har nyere data)
+    loadSaveFromDb().then((dbState) => {
+      if (!dbState) return;
+      dispatch({ type: "LOAD_STATE", payload: finalizeState({ ...dbState, lastUpdated: Date.now() }, { recomputeRates: true }) });
+    }).catch(() => {});
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     latestStateRef.current = state;
@@ -476,7 +473,11 @@ export function useGameEngine() {
     bucket.lastRefillAt = now;
 
     if (bucket.tokens < 1) {
-      return null;
+      const missingTokens = 1 - bucket.tokens;
+      return {
+        accepted: false as const,
+        retryInMs: Math.ceil((missingTokens / MANUAL_CLICK_LIMIT_PER_SECOND) * 1000),
+      };
     }
 
     bucket.tokens -= 1;
@@ -490,6 +491,7 @@ export function useGameEngine() {
     audioController.play("click", current.audioEnabled);
 
     return {
+      accepted: true as const,
       eggGain,
       coinGain: 0,
       isGolden,
