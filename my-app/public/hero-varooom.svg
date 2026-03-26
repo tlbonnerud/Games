@@ -1,0 +1,226 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <!-- Sky gradient -->
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0a0a1a"/>
+      <stop offset="60%" stop-color="#1a0a2e"/>
+      <stop offset="100%" stop-color="#2d1060"/>
+    </linearGradient>
+    <linearGradient id="road" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a1a2e"/>
+      <stop offset="100%" stop-color="#0d0d1a"/>
+    </linearGradient>
+    <linearGradient id="carBody" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ff3030"/>
+      <stop offset="100%" stop-color="#aa0000"/>
+    </linearGradient>
+    <linearGradient id="mountGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4a1080"/>
+      <stop offset="100%" stop-color="#2d0a50"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="brightGlow">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background sky -->
+  <rect width="1600" height="900" fill="url(#sky)"/>
+
+  <!-- Stars (pixel dots) -->
+  <g fill="#ffffff" opacity="0.8">
+    <rect x="80" y="40" width="2" height="2"/>
+    <rect x="200" y="80" width="2" height="2"/>
+    <rect x="340" y="30" width="3" height="3"/>
+    <rect x="480" y="60" width="2" height="2"/>
+    <rect x="620" y="25" width="2" height="2"/>
+    <rect x="760" y="55" width="3" height="3"/>
+    <rect x="900" y="35" width="2" height="2"/>
+    <rect x="1040" y="70" width="2" height="2"/>
+    <rect x="1180" y="20" width="3" height="3"/>
+    <rect x="1320" y="50" width="2" height="2"/>
+    <rect x="1460" y="38" width="2" height="2"/>
+    <rect x="150" y="120" width="2" height="2"/>
+    <rect x="420" y="110" width="2" height="2"/>
+    <rect x="680" y="130" width="2" height="2"/>
+    <rect x="950" y="100" width="2" height="2"/>
+    <rect x="1200" y="115" width="2" height="2"/>
+    <rect x="1480" y="90" width="2" height="2"/>
+    <rect x="50" y="170" width="2" height="2"/>
+    <rect x="280" y="155" width="2" height="2"/>
+    <rect x="550" y="165" width="3" height="3"/>
+    <rect x="820" y="145" width="2" height="2"/>
+    <rect x="1100" y="160" width="2" height="2"/>
+    <rect x="1380" y="140" width="2" height="2"/>
+  </g>
+
+  <!-- Neon moon -->
+  <circle cx="1400" cy="120" r="55" fill="#1a0a30" stroke="#cc44ff" stroke-width="3"/>
+  <circle cx="1400" cy="120" r="48" fill="#200a38" opacity="0.9"/>
+  <circle cx="1400" cy="120" r="55" fill="none" stroke="#dd66ff" stroke-width="1" opacity="0.5"/>
+
+  <!-- Mountains (pixel blocky) -->
+  <polygon points="0,420 120,220 240,380 320,260 440,380 560,200 680,360 760,280 880,400 960,240 1080,380 1160,260 1280,400 1400,220 1520,360 1600,280 1600,500 0,500" fill="url(#mountGrad)"/>
+  <!-- Mountain highlights -->
+  <polygon points="120,220 140,240 100,240" fill="#6a20c0" opacity="0.5"/>
+  <polygon points="560,200 580,230 540,230" fill="#6a20c0" opacity="0.5"/>
+  <polygon points="960,240 980,265 940,265" fill="#6a20c0" opacity="0.5"/>
+  <polygon points="1400,220 1420,250 1380,250" fill="#6a20c0" opacity="0.5"/>
+
+  <!-- Road surface -->
+  <polygon points="0,900 0,600 800,460 1600,600 1600,900" fill="url(#road)"/>
+
+  <!-- Road grid lines (perspective) -->
+  <g stroke="#33ff99" stroke-width="1" opacity="0.25">
+    <!-- Horizontal lines -->
+    <line x1="0" y1="650" x2="1600" y2="650"/>
+    <line x1="0" y1="700" x2="1600" y2="700"/>
+    <line x1="0" y1="760" x2="1600" y2="760"/>
+    <line x1="0" y1="830" x2="1600" y2="830"/>
+    <!-- Converging vertical lines -->
+    <line x1="800" y1="460" x2="0" y2="900"/>
+    <line x1="800" y1="460" x2="200" y2="900"/>
+    <line x1="800" y1="460" x2="400" y2="900"/>
+    <line x1="800" y1="460" x2="600" y2="900"/>
+    <line x1="800" y1="460" x2="800" y2="900"/>
+    <line x1="800" y1="460" x2="1000" y2="900"/>
+    <line x1="800" y1="460" x2="1200" y2="900"/>
+    <line x1="800" y1="460" x2="1400" y2="900"/>
+    <line x1="800" y1="460" x2="1600" y2="900"/>
+  </g>
+
+  <!-- Road center dashes -->
+  <g fill="#ffee00" opacity="0.7">
+    <rect x="780" y="500" width="40" height="10"/>
+    <rect x="720" y="530" width="60" height="12"/>
+    <rect x="630" y="570" width="90" height="14"/>
+    <rect x="490" y="630" width="130" height="16"/>
+    <rect x="270" y="720" width="200" height="20"/>
+    <rect x="820" y="530" width="60" height="12"/>
+    <rect x="880" y="570" width="90" height="14"/>
+    <rect x="980" y="630" width="130" height="16"/>
+    <rect x="1130" y="720" width="200" height="20"/>
+  </g>
+
+  <!-- Road edge lines -->
+  <line x1="800" y1="460" x2="0" y2="720" stroke="#ff3366" stroke-width="3" opacity="0.8"/>
+  <line x1="800" y1="460" x2="1600" y2="720" stroke="#ff3366" stroke-width="3" opacity="0.8"/>
+
+  <!-- Neon roadside lights left -->
+  <g filter="url(#glow)">
+    <line x1="680" y1="490" x2="200" y2="700" stroke="#33ccff" stroke-width="2" opacity="0.5"/>
+    <circle cx="650" cy="498" r="5" fill="#33ccff"/>
+    <circle cx="540" cy="535" r="5" fill="#33ccff"/>
+    <circle cx="400" cy="585" r="6" fill="#33ccff"/>
+    <circle cx="240" cy="648" r="6" fill="#33ccff"/>
+  </g>
+
+  <!-- Neon roadside lights right -->
+  <g filter="url(#glow)">
+    <line x1="920" y1="490" x2="1400" y2="700" stroke="#33ccff" stroke-width="2" opacity="0.5"/>
+    <circle cx="950" cy="498" r="5" fill="#33ccff"/>
+    <circle cx="1060" cy="535" r="5" fill="#33ccff"/>
+    <circle cx="1200" cy="585" r="6" fill="#33ccff"/>
+    <circle cx="1360" cy="648" r="6" fill="#33ccff"/>
+  </g>
+
+  <!-- Player car (pixel art, front view, lower center) -->
+  <!-- Shadow -->
+  <ellipse cx="800" cy="810" rx="90" ry="18" fill="#000000" opacity="0.45"/>
+
+  <!-- Car body -->
+  <rect x="720" y="720" width="160" height="80" rx="8" fill="url(#carBody)"/>
+  <!-- Roof -->
+  <rect x="745" y="680" width="110" height="46" rx="6" fill="#cc2222"/>
+  <!-- Windshield -->
+  <rect x="752" y="686" width="96" height="36" rx="3" fill="#99ddff" opacity="0.85"/>
+  <!-- Windshield reflection -->
+  <rect x="756" y="690" width="30" height="28" rx="2" fill="#ffffff" opacity="0.25"/>
+
+  <!-- Headlights -->
+  <rect x="726" y="730" width="28" height="18" rx="3" fill="#ffff99"/>
+  <rect x="726" y="730" width="28" height="18" rx="3" fill="#ffee00" opacity="0.6" filter="url(#brightGlow)"/>
+  <rect x="1046" y="730" width="28" height="18" rx="3" fill="#ffff99"/>
+  <rect x="1046" y="730" width="28" height="18" rx="3" fill="#ffee00" opacity="0.6" filter="url(#brightGlow)"/>
+
+  <!-- Headlight beams -->
+  <polygon points="726,748 680,820 720,820 754,748" fill="#ffff44" opacity="0.12"/>
+  <polygon points="1074,748 1080,820 1120,820 1074,748" fill="#ffff44" opacity="0.12"/>
+
+  <!-- Taillights -->
+  <rect x="724" y="782" width="22" height="12" rx="2" fill="#ff2222"/>
+  <rect x="1054" y="782" width="22" height="12" rx="2" fill="#ff2222"/>
+
+  <!-- Wheels -->
+  <rect x="714" y="768" width="36" height="26" rx="4" fill="#1a1a1a"/>
+  <rect x="850" y="768" width="36" height="26" rx="4" fill="#1a1a1a" transform="translate(0,0)"/>
+  <rect x="1050" y="768" width="36" height="26" rx="4" fill="#1a1a1a"/>
+
+  <!-- Wheel rims -->
+  <circle cx="732" cy="781" r="8" fill="#888888"/>
+  <circle cx="868" cy="781" r="8" fill="#888888"/>
+  <circle cx="1068" cy="781" r="8" fill="#888888"/>
+  <!-- Front center wheel grouping -->
+  <rect x="764" y="772" width="72" height="22" rx="4" fill="#1a1a1a"/>
+  <circle cx="800" cy="783" r="8" fill="#888888"/>
+
+  <!-- Car racing stripe -->
+  <rect x="720" y="748" width="160" height="6" fill="#ffffff" opacity="0.2"/>
+
+  <!-- Speed lines -->
+  <g stroke="#ffffff" stroke-width="2" opacity="0.15">
+    <line x1="620" y1="750" x2="520" y2="760"/>
+    <line x1="615" y1="775" x2="500" y2="790"/>
+    <line x1="625" y1="800" x2="510" y2="820"/>
+    <line x1="980" y1="750" x2="1080" y2="760"/>
+    <line x1="985" y1="775" x2="1100" y2="790"/>
+    <line x1="975" y1="800" x2="1090" y2="820"/>
+  </g>
+
+  <!-- Title text: VAROOOM 3D -->
+  <!-- Shadow -->
+  <text x="803" y="393" font-family="monospace" font-size="82" font-weight="900" fill="#000000" opacity="0.5" letter-spacing="4" text-anchor="middle">VAROOOM 3D</text>
+  <!-- Main text -->
+  <text x="800" y="390" font-family="monospace" font-size="82" font-weight="900" fill="#ff3366" letter-spacing="4" text-anchor="middle">VAROOOM 3D</text>
+  <!-- Neon outline -->
+  <text x="800" y="390" font-family="monospace" font-size="82" font-weight="900" fill="none" stroke="#ff6699" stroke-width="1.5" letter-spacing="4" text-anchor="middle" opacity="0.7">VAROOOM 3D</text>
+
+  <!-- Subtitle -->
+  <text x="800" y="428" font-family="monospace" font-size="28" fill="#cc44ff" letter-spacing="6" text-anchor="middle" opacity="0.9">GBA RACING</text>
+
+  <!-- Genre badge -->
+  <rect x="696" y="440" width="208" height="34" rx="4" fill="#2d0a50" stroke="#cc44ff" stroke-width="2"/>
+  <text x="800" y="462" font-family="monospace" font-size="18" fill="#cc44ff" letter-spacing="4" text-anchor="middle">RACING</text>
+
+  <!-- Decorative neon lines -->
+  <line x1="0" y1="456" x2="680" y2="456" stroke="#cc44ff" stroke-width="1" opacity="0.3"/>
+  <line x1="920" y1="456" x2="1600" y2="456" stroke="#cc44ff" stroke-width="1" opacity="0.3"/>
+
+  <!-- Scan lines overlay -->
+  <g opacity="0.04">
+    <rect x="0" y="0" width="1600" height="2" fill="#ffffff"/>
+    <rect x="0" y="6" width="1600" height="2" fill="#ffffff"/>
+    <rect x="0" y="12" width="1600" height="2" fill="#ffffff"/>
+    <rect x="0" y="18" width="1600" height="2" fill="#ffffff"/>
+    <rect x="0" y="24" width="1600" height="2" fill="#ffffff"/>
+    <rect x="0" y="30" width="1600" height="2" fill="#ffffff"/>
+    <rect x="0" y="36" width="1600" height="2" fill="#ffffff"/>
+    <rect x="0" y="42" width="1600" height="2" fill="#ffffff"/>
+    <rect x="0" y="48" width="1600" height="2" fill="#ffffff"/>
+    <rect x="0" y="54" width="1600" height="2" fill="#ffffff"/>
+    <rect x="0" y="60" width="1600" height="2" fill="#ffffff"/>
+    <rect x="0" y="66" width="1600" height="2" fill="#ffffff"/>
+    <rect x="0" y="72" width="1600" height="2" fill="#ffffff"/>
+    <rect x="0" y="78" width="1600" height="2" fill="#ffffff"/>
+    <rect x="0" y="84" width="1600" height="2" fill="#ffffff"/>
+    <rect x="0" y="90" width="1600" height="2" fill="#ffffff"/>
+    <rect x="0" y="96" width="1600" height="2" fill="#ffffff"/>
+    <rect x="0" y="102" width="1600" height="2" fill="#ffffff"/>
+    <rect x="0" y="108" width="1600" height="2" fill="#ffffff"/>
+    <rect x="0" y="114" width="1600" height="2" fill="#ffffff"/>
+  </g>
+</svg>

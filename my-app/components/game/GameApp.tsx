@@ -1,20 +1,25 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { type FloatingGain } from "@/components/game/ClickArena";
-import { CompactShop } from "@/components/game/CompactShop";
-import { FarmView } from "@/components/game/FarmView";
-import { LeftPanel } from "@/components/game/LeftPanel";
+import { ClickArena, type FloatingGain } from "@/components/game/ClickArena";
+import { EggMarketPanel } from "@/components/game/EggMarketPanel";
 import { ResetModal } from "@/components/game/ResetModal";
+import { ShopPanel } from "@/components/game/ShopPanel";
+import { StatsPanel } from "@/components/game/StatsPanel";
 import { ToastStack } from "@/components/game/ToastStack";
+import { UnitOverviewPanel } from "@/components/game/UnitOverviewPanel";
 import { UnlockBanner } from "@/components/game/UnlockBanner";
+import { UpgradePanel } from "@/components/game/UpgradePanel";
 import { UNIT_DEFINITIONS } from "@/data/units";
 import { UPGRADE_DEFINITIONS } from "@/data/upgrades";
+import { usePersistentState } from "@/hooks/usePersistentState";
 import { useGameEngine } from "@/hooks/useGameEngine";
 import { CURRENCY_ICON, UNIT_ICON, getUpgradeIcon } from "@/data/icons";
 import { getUnitCost, getUnitSellRefund } from "@/lib/economy";
 import { describeUpgradeEffect, formatNumber } from "@/lib/format";
+import { getTotalUnitsOwned } from "@/lib/game-state";
 import { getUnlockProgress } from "@/lib/unlocks";
+import type { InspectPayload } from "./inspect";
 
 type UpgradeCategory = "Klikk" | "Produksjon" | "Marked" | "Spesial";
 
@@ -31,6 +36,7 @@ export function GameApp() {
     handleManualClick,
     sellEggs,
     buyUnit,
+    sellUnit,
     buyUpgrade,
     toggleAudio,
     resetGame,
@@ -39,6 +45,11 @@ export function GameApp() {
 
   const [floatingGains, setFloatingGains] = useState<FloatingGain[]>([]);
   const [showResetModal, setShowResetModal] = useState(false);
+  const [rightPanelMode, setRightPanelMode] = usePersistentState<"units" | "upgrades">(
+    "farm-right-panel-mode",
+    "units",
+  );
+  const [inspectPayload, setInspectPayload] = useState<InspectPayload | null>(null);
   const [showRateLimitWarning, setShowRateLimitWarning] = useState(false);
   const floatingIdRef = useRef(1);
   const rateLimitWarningTimeoutRef = useRef<number | null>(null);
@@ -50,6 +61,8 @@ export function GameApp() {
       }
     };
   }, []);
+
+  const totalUnits = useMemo(() => getTotalUnitsOwned(state.unitsOwned), [state.unitsOwned]);
 
   const unlockedUnitSet = useMemo(() => new Set(unlockedUnitIds), [unlockedUnitIds]);
   const unlockedUpgradeSet = useMemo(
@@ -125,6 +138,13 @@ export function GameApp() {
     }
   };
 
+  const sellUnitBatch = (unitId: (typeof unitCards)[number]["id"], amount = 1) => {
+    const safeAmount = Math.max(1, Math.floor(amount));
+    for (let i = 0; i < safeAmount; i += 1) {
+      if (!sellUnit(unitId)) break;
+    }
+  };
+
   const onArenaClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     const outcome = handleManualClick();
     if (!outcome.accepted) {
@@ -138,6 +158,7 @@ export function GameApp() {
       }, Math.max(280, Math.min(900, outcome.retryInMs)));
       return false;
     }
+    const gain = outcome;
 
     const bounds = event.currentTarget.getBoundingClientRect();
     const x = ((event.clientX - bounds.left) / bounds.width) * 100;
@@ -150,14 +171,14 @@ export function GameApp() {
       id: floatingId,
       x,
       y,
-      eggText: `${outcome.isGolden ? "GYLDEN " : ""}+${formatNumber(outcome.eggGain)} egg`,
+      eggText: `${gain.isGolden ? "GYLDEN " : ""}+${formatNumber(gain.eggGain)} egg`,
       coinText: undefined,
-      isGolden: outcome.isGolden,
+      isGolden: gain.isGolden,
     };
 
     setFloatingGains((prev) => [...prev.slice(-5), nextGain]);
     window.setTimeout(() => {
-      setFloatingGains((prev) => prev.filter((e) => e.id !== floatingId));
+      setFloatingGains((prev) => prev.filter((entry) => entry.id !== floatingId));
     }, 900);
 
     return true;
@@ -175,39 +196,98 @@ export function GameApp() {
     );
   }
 
-  const farmUnits = unitCards.map((u) => ({ id: u.id, iconSrc: u.iconSrc, owned: u.owned }));
-
   return (
     <>
       <UnlockBanner message={bannerMessage} />
       <ToastStack toasts={toasts} onDismiss={dismissToast} />
 
-      <div className="farm-page">
-        <div className="cc-shell">
-          <LeftPanel
-            eggs={state.eggs}
-            coins={state.coins}
-            eggsPerSecond={state.eggsPerSecond}
-            coinsPerSecond={state.coinsPerSecond}
-            audioEnabled={state.audioEnabled}
-            floatingGains={floatingGains}
-            showRateLimitWarning={showRateLimitWarning}
-            onManualClick={onArenaClick}
-            onSellEggs={sellEggs}
-            onToggleAudio={toggleAudio}
-            onRequestReset={() => setShowResetModal(true)}
-            eggIconSrc={CURRENCY_ICON.egg}
-            coinIconSrc={CURRENCY_ICON.coin}
-          />
-          <FarmView units={farmUnits} />
-          <CompactShop
-            units={unitCards}
-            upgrades={upgradeCards}
-            onBuyUnit={buyUnitBatch}
-            onBuyUpgrade={buyUpgrade}
-          />
-        </div>
-      </div>
+      <main className="game-shell farm-game-shell">
+        <section className="farm-main-layout">
+          <div className="farm-focus-column">
+            <ClickArena
+              floatingGains={floatingGains}
+              onManualClick={onArenaClick}
+              goldenClickChance={state.goldenClickChance}
+              eggs={state.eggs}
+              coins={state.coins}
+              clickPower={state.clickPower}
+              eggsPerSecond={state.eggsPerSecond}
+              coinsPerSecond={state.coinsPerSecond}
+              eggIconSrc={CURRENCY_ICON.egg}
+              coinIconSrc={CURRENCY_ICON.coin}
+              showRateLimitWarning={showRateLimitWarning}
+            />
+            <div
+              className="farm-focus-scroll"
+              role="region"
+              aria-label="Venstre panel: marked og kontrollsenter"
+              tabIndex={0}
+            >
+              <EggMarketPanel
+                eggs={state.eggs}
+                coinMultiplier={state.coinMultiplier}
+                eggIconSrc={CURRENCY_ICON.egg}
+                coinIconSrc={CURRENCY_ICON.coin}
+                onSellEggs={sellEggs}
+              />
+              <StatsPanel
+                state={state}
+                totalUnits={totalUnits}
+                audioEnabled={state.audioEnabled}
+                onToggleAudio={toggleAudio}
+                onRequestReset={() => setShowResetModal(true)}
+              />
+            </div>
+          </div>
+
+          <div className="farm-scroll-column">
+            <UnitOverviewPanel
+              units={unitCards}
+              inspectPayload={inspectPayload}
+              onInspectChange={setInspectPayload}
+            />
+          </div>
+          <div className="farm-scroll-column farm-control-column">
+            <div className="panel-tab-row farm-side-switch farm-store-header">
+              <button
+                type="button"
+                className={`panel-tab ${rightPanelMode === "units" ? "is-active" : ""}`}
+                onClick={() => setRightPanelMode("units")}
+              >
+                Enhetsbutikk
+              </button>
+              <button
+                type="button"
+                className={`panel-tab ${rightPanelMode === "upgrades" ? "is-active" : ""}`}
+                onClick={() => setRightPanelMode("upgrades")}
+              >
+                Oppgraderinger
+              </button>
+            </div>
+            <div className="farm-store-body">
+              {rightPanelMode === "units" ? (
+                <ShopPanel
+                  units={unitCards}
+                  coinIconSrc={CURRENCY_ICON.coin}
+                  totalUnits={totalUnits}
+                  onBuyUnit={buyUnitBatch}
+                  onSellUnit={sellUnitBatch}
+                  inspectPayload={inspectPayload}
+                  onInspectChange={setInspectPayload}
+                />
+              ) : (
+                <UpgradePanel
+                  upgrades={upgradeCards}
+                  coinIconSrc={CURRENCY_ICON.coin}
+                  onBuyUpgrade={buyUpgrade}
+                  inspectPayload={inspectPayload}
+                  onInspectChange={setInspectPayload}
+                />
+              )}
+            </div>
+          </div>
+        </section>
+      </main>
 
       <ResetModal
         open={showResetModal}

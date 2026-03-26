@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VAROOOM 3D</title>
+    <style>
+      :root {
+        color-scheme: dark;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Segoe UI", Arial, sans-serif;
+        background:
+          radial-gradient(circle at 15% 20%, rgba(34, 197, 94, 0.18), transparent 35%),
+          radial-gradient(circle at 80% 0%, rgba(56, 189, 248, 0.16), transparent 28%),
+          #05070a;
+        color: #f2f7ff;
+      }
+
+      .page {
+        width: min(1400px, 100%);
+        margin: 0 auto;
+        padding: 12px;
+      }
+
+      .info {
+        margin: 0 0 10px;
+        padding: 10px 12px;
+        border: 1px solid rgba(148, 163, 184, 0.35);
+        border-radius: 10px;
+        background: rgba(15, 23, 42, 0.65);
+        font-size: 14px;
+        line-height: 1.45;
+      }
+
+      .info strong {
+        color: #86efac;
+      }
+
+      .info a {
+        color: #93c5fd;
+      }
+
+      .control-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(220px, 1fr));
+        gap: 6px 14px;
+        margin-top: 8px;
+      }
+
+      .control-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .key {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 64px;
+        padding: 2px 8px;
+        border: 1px solid rgba(148, 163, 184, 0.45);
+        border-radius: 6px;
+        background: rgba(15, 23, 42, 0.55);
+        font-weight: 700;
+        color: #d9f99d;
+      }
+
+      #game {
+        width: 100%;
+        height: min(82vh, 860px);
+        border: 1px solid rgba(148, 163, 184, 0.25);
+        border-radius: 10px;
+        overflow: hidden;
+        background: #000;
+      }
+
+      @media (max-width: 900px) {
+        #game {
+          height: 74vh;
+        }
+
+        .control-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <div class="info">
+        <strong>Standard-oppsett (default):</strong>
+        <div class="control-grid">
+          <div class="control-row"><span class="key">← / →</span><span>Styring</span></div>
+          <div class="control-row"><span class="key">Space</span><span>A-knapp (gass / bekreft)</span></div>
+          <div class="control-row"><span class="key">↑ / ↓</span><span>D-pad opp/ned (menyvalg)</span></div>
+          <div class="control-row"><span class="key">Shift</span><span>B-knapp (brems / tilbake)</span></div>
+          <div class="control-row"><span class="key">Enter</span><span>Start</span></div>
+          <div class="control-row"><span class="key">Backspace</span><span>Select</span></div>
+        </div>
+        <div style="margin-top: 8px">
+          <a href="/varooom-3d/readme.txt" target="_blank" rel="noopener">Åpne original readme</a>
+        </div>
+      </div>
+      <div id="game"></div>
+    </div>
+
+    <script>
+      window.EJS_player = "#game";
+      window.EJS_core = "gba";
+      window.EJS_gameName = "VAROOOM 3D";
+      window.EJS_color = "#16a34a";
+      window.EJS_pathtodata = "https://cdn.emulatorjs.org/stable/data/";
+      window.EJS_gameUrl = "/varooom-3d/varooom-3d.gba";
+      window.EJS_startOnLoaded = true;
+      window.EJS_controlScheme = "gba";
+      window.EJS_volume = 0.75;
+      window.EJS_defaultControls = {
+        0: {
+          0: { value: "shift", value2: "BUTTON_2" },
+          1: { value: "s", value2: "BUTTON_4" },
+          2: { value: "backspace", value2: "SELECT" },
+          3: { value: "enter", value2: "START" },
+          4: { value: "up arrow", value2: "DPAD_UP" },
+          5: { value: "down arrow", value2: "DPAD_DOWN" },
+          6: { value: "left arrow", value2: "DPAD_LEFT" },
+          7: { value: "right arrow", value2: "DPAD_RIGHT" },
+          8: { value: "space", value2: "BUTTON_1" },
+          9: { value: "a", value2: "BUTTON_3" },
+          10: { value: "q", value2: "LEFT_TOP_SHOULDER" },
+          11: { value: "e", value2: "RIGHT_TOP_SHOULDER" },
+          12: { value: "tab", value2: "LEFT_BOTTOM_SHOULDER" },
+          13: { value: "r", value2: "RIGHT_BOTTOM_SHOULDER" },
+          14: { value: "", value2: "LEFT_STICK" },
+          15: { value: "", value2: "RIGHT_STICK" },
+          16: { value: "h", value2: "LEFT_STICK_X:+1" },
+          17: { value: "f", value2: "LEFT_STICK_X:-1" },
+          18: { value: "g", value2: "LEFT_STICK_Y:+1" },
+          19: { value: "t", value2: "LEFT_STICK_Y:-1" },
+          20: { value: "l", value2: "RIGHT_STICK_X:+1" },
+          21: { value: "j", value2: "RIGHT_STICK_X:-1" },
+          22: { value: "k", value2: "RIGHT_STICK_Y:+1" },
+          23: { value: "i", value2: "RIGHT_STICK_Y:-1" },
+          24: { value: "1" },
+          25: { value: "2" },
+          26: { value: "3" },
+          27: { value: "add" },
+          28: { value: "p" },
+          29: { value: "subtract" },
+        },
+        1: {},
+        2: {},
+        3: {},
+      };
+      window.EJS_Buttons = {
+        playPause: false,
+        restart: false,
+        mute: false,
+        settings: false,
+        fullscreen: false,
+        saveState: false,
+        loadState: false,
+        screenRecord: false,
+        gamepad: false,
+        cheat: false,
+        volume: false,
+        saveSavFiles: false,
+        loadSavFiles: false,
+        quickSave: false,
+        quickLoad: false,
+        screenshot: false,
+        cacheManager: false,
+        exitEmulation: false,
+      };
+    </script>
+    <script src="https://cdn.emulatorjs.org/stable/data/loader.js"></script>
+  </body>
+</html>
