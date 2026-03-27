@@ -1819,38 +1819,35 @@ body::after {
 }
 
 .tetris-frame-page {
-  width: min(1320px, 100%);
-  margin: 0 auto;
-  padding: 1rem 0.75rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
 
 .tetris-frame-header {
   display: flex;
-  margin-bottom: 0.65rem;
+  align-items: center;
+  flex-shrink: 0;
+  height: 36px;
+  padding: 0 0.75rem;
+  background: rgba(0, 0, 0, 0.55);
 }
 
 .tetris-frame-shell {
-  border: 4px solid #a2c295;
-  border-radius: 12px;
-  background: linear-gradient(180deg, rgba(44, 70, 49, 0.95), rgba(27, 43, 31, 0.97));
-  box-shadow:
-    0 0 0 2px #557758,
-    6px 6px 0 rgba(18, 32, 21, 0.75);
+  flex: 1;
   overflow: hidden;
-  height: min(88vh, 900px);
+  min-height: 0;
 }
 
 .tetris-frame {
   width: 100%;
   height: 100%;
   border: 0;
-  background: #020302;
-}
-
-@media (max-width: 900px) {
-  .tetris-frame-shell {
-    height: 78vh;
-  }
+  display: block;
 }
 
 .bubble-page {
