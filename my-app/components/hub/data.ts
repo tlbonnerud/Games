@@ -64,6 +64,14 @@ export const HUB_GAMES: HubGame[] = [
   },
   {
     id: 7,
+    title: "Cookie Clicker",
+    genre: "Idle",
+    description: "Klikk på kjeksen, kjøp bestemødre og fabrikker, og produser milliarder av kjeks.",
+    href: "/cookie-clicker",
+    image: "/hero-cookie-clicker.svg",
+  },
+  {
+    id: 8,
     title: "Freaky Towers",
     genre: "Puzzle",
     description: "Stable fargerike blokker i ustabile tårn – fysikkbasert pusle-spill inspirert av Tricky Towers.",
