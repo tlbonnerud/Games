@@ -62,6 +62,14 @@ export const HUB_GAMES: HubGame[] = [
     href: "/varooom-3d",
     image: "/hero-varooom.svg",
   },
+  {
+    id: 7,
+    title: "Freaky Towers",
+    genre: "Puzzle",
+    description: "Stable fargerike blokker i ustabile tårn – fysikkbasert pusle-spill inspirert av Tricky Towers.",
+    href: "/freaky-towers",
+    image: "/hero-freaky-towers.svg",
+  },
 ];
 
 export function findGameById(gameId: string | undefined): HubGame | undefined {
