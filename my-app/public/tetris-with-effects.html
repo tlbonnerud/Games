@@ -1093,6 +1093,7 @@
       updateModeStatus();
       updateHighScoreDisplay();
       showSprintOverlay(finalTime, isNewRecord);
+      try { window.parent.postMessage({ type: "tetris-sprint", timeMs: finalTime, lines: linesCleared }, "*"); } catch(e) {}
     }
 
     function resetGameState() {
@@ -1167,6 +1168,7 @@
                     highScore = score;
                     saveHighScore(highScore);
                 }
+                try { window.parent.postMessage({ type: "tetris-gameover", score, lines: linesCleared, level }, "*"); } catch(e) {}
 
                 highScore = loadHighScore();
                 updateHighScoreDisplay();

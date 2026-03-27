@@ -44,6 +44,7 @@ export const HUB_GAMES: HubGame[] = [
     description: "Tetris med hold, ghost piece, sprint-mode og moderne visuelle effekter.",
     href: "/tetris",
     image: "/hero-tetris.svg",
+    gameKey: "tetris",
   },
   {
     id: 5,
