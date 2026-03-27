@@ -3167,7 +3167,7 @@ Game.Launch=function()
 			if (Game.elderWrathD>=1 && Game.elderWrathD<1.5) l('cookieShower').style.opacity=1-((Game.elderWrathD-1)/0.5);
 		}
 		
-		var unit=(Math.round(Game.cookiesd)==1?' cookie':' cookies');
+		var unit=(Math.round(Game.cookiesd)==1?' egg':' egg');
 		if (Math.round(Game.cookiesd).toString().length>11) unit='<br>egg';
 		l('cookies').innerHTML=Beautify(Math.round(Game.cookiesd))+unit+'<div style="font-size:50%;">per sekund : '+Beautify(Game.cookiesPs,1)+'</div>';//display egg amount
 		if (l('coinDisplay')) l('coinDisplay').innerHTML='&#127760; '+Beautify(Math.round(Game.coins))+' coins'+(Game.coinsEarned>0?' <small style="opacity:0.6">(totalt: '+Beautify(Math.round(Game.coinsEarned))+')</small>':'');

@@ -9,8 +9,15 @@
 
 <script src="base64.js"></script>
 <script src="ajax.js"></script>
-<script src="dungeons.js?v=1.5026"></script>
-<script src="main.js?v=1.5031"></script>
+<script>function LaunchDungeons(){}</script>
+<script>
+window.onerror = function(msg, src, line, col, err) {
+  var d = document.getElementById('javascriptError');
+  if (d) d.innerHTML = '<div style="padding:32px;color:#f66;"><b>JS Error:</b><br>' + msg + '<br><small>' + src + ':' + line + '</small></div>';
+  return false;
+};
+</script>
+<script src="main.js?v=1.5032"></script>
 
 </head>
 <body>
