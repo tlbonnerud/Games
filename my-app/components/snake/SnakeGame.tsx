@@ -468,6 +468,12 @@ export function SnakeGame() {
     runtime.shake = 16;
     runtime.accumulator = 0;
     setStatus("gameover");
+    // Save score to DB (fire-and-forget, ignore errors)
+    fetch("/api/progress", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ game_id: "neon-snake", score: runtime.score }),
+    }).catch(() => {});
   }, []);
 
   const stepGame = useCallback(() => {

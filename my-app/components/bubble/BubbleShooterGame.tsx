@@ -87,6 +87,7 @@ export function BubbleShooterGame() {
   const [aimAngle, setAimAngle] = useState<number>(-Math.PI / 2);
   const [projectile, setProjectile] = useState<Projectile | null>(null);
   const [score, setScore] = useState(0);
+  const scoreRef = useRef(0);
   const [shotsFired, setShotsFired] = useState(0);
   const [status, setStatus] = useState<"playing" | "won" | "lost">("playing");
   const [parityOffset, setParityOffset] = useState(0);
@@ -114,6 +115,13 @@ export function BubbleShooterGame() {
 
   useEffect(() => {
     statusRef.current = status;
+    if (status === "won" || status === "lost") {
+      fetch("/api/progress", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ game_id: "bubble-shooter", score: scoreRef.current }),
+      }).catch(() => {});
+    }
   }, [status]);
 
   useEffect(() => {
@@ -140,6 +148,7 @@ export function BubbleShooterGame() {
     setProjectile(null);
     projectileRef.current = null;
     setScore(0);
+    scoreRef.current = 0;
     setShotsFired(0);
     shotsFiredRef.current = 0;
     setParityOffset(0);
@@ -178,7 +187,11 @@ export function BubbleShooterGame() {
     shotsFiredRef.current = nextShots;
     setShotsFired(nextShots);
     if (removed > 0) {
-      setScore((previous) => previous + removed * 15);
+      setScore((previous) => {
+        const next = previous + removed * 15;
+        scoreRef.current = next;
+        return next;
+      });
     }
 
     const nextCurrent = nextColorRef.current;

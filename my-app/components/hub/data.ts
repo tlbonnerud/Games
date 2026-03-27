@@ -5,6 +5,8 @@ export interface HubGame {
   description: string;
   href: string;
   image: string;
+  /** game_id used in game_progress table – undefined for games that don't report scores */
+  gameKey?: string;
 }
 
 export const HUB_GAMES: HubGame[] = [
@@ -15,6 +17,7 @@ export const HUB_GAMES: HubGame[] = [
     description: "Bygg en pixel-farm med automatisering, upgrades og produksjonskjedeeffekt.",
     href: "/farm",
     image: "/hero-chicken.svg",
+    gameKey: "chicken-farm",
   },
   {
     id: 2,
@@ -23,6 +26,7 @@ export const HUB_GAMES: HubGame[] = [
     description: "Sikt, match bobler og fjern brettet før skuddene tar over skjermen.",
     href: "/bubble-shooter",
     image: "/hero-bubble.svg",
+    gameKey: "bubble-shooter",
   },
   {
     id: 3,
@@ -31,6 +35,7 @@ export const HUB_GAMES: HubGame[] = [
     description: "Klassisk Snake med lysende arena, raskere tempo og høy score-jakt.",
     href: "/snake",
     image: "/hero-snake.svg",
+    gameKey: "neon-snake",
   },
   {
     id: 4,
