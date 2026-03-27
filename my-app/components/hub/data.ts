@@ -78,6 +78,14 @@ export const HUB_GAMES: HubGame[] = [
     href: "/freaky-towers",
     image: "/hero-freaky-towers.svg",
   },
+  {
+    id: 9,
+    title: "Egg Factory",
+    genre: "Idle",
+    description: "Klikk på kyllingen, bygg hønsehus og fabrikker, og konverter egg til gull.",
+    href: "/egg-factory",
+    image: "/hero-egg-factory.svg",
+  },
 ];
 
 export function findGameById(gameId: string | undefined): HubGame | undefined {

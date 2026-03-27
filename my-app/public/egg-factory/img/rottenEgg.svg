@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" shape-rendering="crispEdges">
+  <rect width="64" height="64" fill="#00000000"/>
+
+  <!-- Egg body -->
+  <rect x="22" y="6"  width="20" height="4"  fill="#7aad4a"/>
+  <rect x="18" y="10" width="28" height="4"  fill="#7aad4a"/>
+  <rect x="16" y="14" width="32" height="4"  fill="#7aad4a"/>
+  <rect x="14" y="18" width="36" height="22" fill="#7aad4a"/>
+  <rect x="16" y="40" width="32" height="4"  fill="#7aad4a"/>
+  <rect x="18" y="44" width="28" height="4"  fill="#7aad4a"/>
+  <rect x="22" y="48" width="20" height="4"  fill="#7aad4a"/>
+  <rect x="26" y="52" width="12" height="4"  fill="#7aad4a"/>
+
+  <!-- Darker patches -->
+  <rect x="24" y="18" width="8" height="6"  fill="#4a7a20"/>
+  <rect x="34" y="28" width="6" height="8"  fill="#4a7a20"/>
+  <rect x="20" y="36" width="6" height="4"  fill="#4a7a20"/>
+
+  <!-- Cracks -->
+  <rect x="28" y="14" width="2" height="8"  fill="#2a4a10"/>
+  <rect x="30" y="20" width="4" height="2"  fill="#2a4a10"/>
+  <rect x="34" y="22" width="2" height="6"  fill="#2a4a10"/>
+  <rect x="22" y="30" width="2" height="6"  fill="#2a4a10"/>
+  <rect x="24" y="34" width="4" height="2"  fill="#2a4a10"/>
+
+  <!-- Shading -->
+  <rect x="42" y="14" width="4" height="30" fill="#2a5a10" opacity="0.5"/>
+
+  <!-- Stink lines -->
+  <rect x="28" y="0"  width="2" height="4"  fill="#a0d060" opacity="0.7"/>
+  <rect x="34" y="2"  width="2" height="4"  fill="#a0d060" opacity="0.5"/>
+  <rect x="24" y="1"  width="2" height="3"  fill="#a0d060" opacity="0.4"/>
+</svg>

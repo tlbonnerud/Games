@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 64 64" shape-rendering="crispEdges">
+  <rect width="64" height="64" fill="#00000000"/>
+
+  <!-- Comb / kam -->
+  <rect x="22" y="4" width="4" height="4" fill="#d64545"/>
+  <rect x="26" y="2" width="4" height="6" fill="#f26a6a"/>
+  <rect x="30" y="4" width="4" height="4" fill="#d64545"/>
+  <rect x="26" y="6" width="4" height="2" fill="#d64545"/>
+
+  <!-- Head -->
+  <rect x="20" y="8"  width="22" height="18" fill="#fff8cf"/>
+  <rect x="18" y="10" width="2"  height="12" fill="#fff8cf"/>
+  <rect x="42" y="10" width="2"  height="12" fill="#fff8cf"/>
+
+  <!-- Eye -->
+  <rect x="36" y="12" width="4" height="4" fill="#1e1e2e"/>
+  <rect x="37" y="12" width="2" height="2" fill="#3a3a5c"/>
+  <rect x="38" y="12" width="1" height="1" fill="#ffffff"/>
+
+  <!-- Beak -->
+  <rect x="42" y="14" width="6" height="4" fill="#f6a23d"/>
+  <rect x="44" y="18" width="4" height="2" fill="#f4b13b"/>
+  <rect x="48" y="14" width="2" height="4" fill="#d9822b"/>
+  <!-- Nostril -->
+  <rect x="44" y="15" width="1" height="1" fill="#c0621a"/>
+
+  <!-- Wattle -->
+  <rect x="40" y="22" width="4" height="6" fill="#d64545"/>
+  <rect x="38" y="24" width="4" height="4" fill="#f26a6a"/>
+
+  <!-- Neck -->
+  <rect x="22" y="26" width="18" height="6" fill="#ffe69d"/>
+  <rect x="20" y="28" width="4"  height="4" fill="#ffe69d"/>
+
+  <!-- Body -->
+  <rect x="14" y="32" width="34" height="22" fill="#fff8cf"/>
+  <rect x="12" y="34" width="4"  height="16" fill="#fff8cf"/>
+  <rect x="48" y="34" width="4"  height="16" fill="#fff8cf"/>
+
+  <!-- Body shading -->
+  <rect x="14" y="50" width="34" height="4" fill="#ffe69d"/>
+  <rect x="12" y="48" width="4"  height="4" fill="#ffe69d"/>
+  <rect x="48" y="48" width="4"  height="4" fill="#ffe69d"/>
+
+  <!-- Wing left -->
+  <rect x="12" y="34" width="6" height="14" fill="#f0e8b0"/>
+  <rect x="10" y="36" width="4" height="10" fill="#e8d898"/>
+  <rect x="8"  y="38" width="4" height="8"  fill="#f0e8b0"/>
+  <!-- Wing feather tips -->
+  <rect x="8"  y="44" width="2" height="4" fill="#d4c886"/>
+  <rect x="10" y="46" width="2" height="4" fill="#d4c886"/>
+  <rect x="12" y="48" width="2" height="4" fill="#d4c886"/>
+
+  <!-- Wing right -->
+  <rect x="46" y="34" width="6" height="14" fill="#f0e8b0"/>
+  <rect x="50" y="36" width="4" height="10" fill="#e8d898"/>
+  <rect x="52" y="38" width="4" height="8"  fill="#f0e8b0"/>
+  <!-- Wing feather tips -->
+  <rect x="54" y="44" width="2" height="4" fill="#d4c886"/>
+  <rect x="52" y="46" width="2" height="4" fill="#d4c886"/>
+  <rect x="50" y="48" width="2" height="4" fill="#d4c886"/>
+
+  <!-- Tail feathers -->
+  <rect x="14" y="30" width="4" height="8" fill="#f0e8b0"/>
+  <rect x="12" y="28" width="4" height="8" fill="#e8d898"/>
+  <rect x="10" y="30" width="4" height="6" fill="#f0e8b0"/>
+
+  <!-- Legs -->
+  <rect x="22" y="54" width="6"  height="6" fill="#f6a23d"/>
+  <rect x="36" y="54" width="6"  height="6" fill="#f6a23d"/>
+
+  <!-- Feet / claws -->
+  <rect x="18" y="60" width="6"  height="2" fill="#d9822b"/>
+  <rect x="22" y="58" width="2"  height="4" fill="#d9822b"/>
+  <rect x="26" y="60" width="4"  height="2" fill="#d9822b"/>
+  <rect x="32" y="60" width="6"  height="2" fill="#d9822b"/>
+  <rect x="36" y="58" width="2"  height="4" fill="#d9822b"/>
+  <rect x="40" y="60" width="4"  height="2" fill="#d9822b"/>
+
+  <!-- Body outline / feather detail lines -->
+  <rect x="16" y="32" width="2" height="20" fill="#d4c886" opacity="0.5"/>
+  <rect x="46" y="32" width="2" height="20" fill="#d4c886" opacity="0.5"/>
+  <rect x="24" y="40" width="14" height="2" fill="#d4c886" opacity="0.3"/>
+  <rect x="22" y="46" width="18" height="2" fill="#d4c886" opacity="0.3"/>
+</svg>

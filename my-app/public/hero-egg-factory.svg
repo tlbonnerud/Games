@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="60%" r="70%">
+      <stop offset="0%" stop-color="#2d6a1a"/>
+      <stop offset="100%" stop-color="#0d1f08"/>
+    </radialGradient>
+    <radialGradient id="eggGrad" cx="35%" cy="30%" r="65%">
+      <stop offset="0%" stop-color="#fff9e0"/>
+      <stop offset="60%" stop-color="#f5e87a"/>
+      <stop offset="100%" stop-color="#d4b800"/>
+    </radialGradient>
+    <radialGradient id="smallEggGrad" cx="35%" cy="30%" r="65%">
+      <stop offset="0%" stop-color="#fff8cf"/>
+      <stop offset="100%" stop-color="#e8d878"/>
+    </radialGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softglow">
+      <feGaussianBlur stdDeviation="14" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="drop">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1600" height="900" fill="url(#bg)"/>
+
+  <!-- Ground stripe -->
+  <rect x="0" y="720" width="1600" height="180" fill="#1a4010" opacity="0.8"/>
+  <rect x="0" y="720" width="1600" height="8" fill="#3a7a20" opacity="0.6"/>
+
+  <!-- Ambient glow behind main egg -->
+  <ellipse cx="800" cy="490" rx="280" ry="220" fill="#ffd700" opacity="0.07"/>
+  <ellipse cx="800" cy="490" rx="180" ry="140" fill="#ffe066" opacity="0.05"/>
+
+  <!-- Falling small eggs -->
+  <g opacity="0.45">
+    <ellipse cx="140" cy="180" rx="14" ry="18" fill="url(#smallEggGrad)"/>
+    <ellipse cx="240" cy="90" rx="10" ry="13" fill="url(#smallEggGrad)"/>
+    <ellipse cx="420" cy="220" rx="12" ry="15" fill="url(#smallEggGrad)"/>
+    <ellipse cx="520" cy="110" rx="16" ry="20" fill="url(#smallEggGrad)"/>
+    <ellipse cx="180" cy="380" rx="10" ry="13" fill="url(#smallEggGrad)"/>
+    <ellipse cx="1080" cy="120" rx="14" ry="17" fill="url(#smallEggGrad)"/>
+    <ellipse cx="1320" cy="200" rx="11" ry="14" fill="url(#smallEggGrad)"/>
+    <ellipse cx="1460" cy="100" rx="15" ry="19" fill="url(#smallEggGrad)"/>
+    <ellipse cx="1220" cy="320" rx="12" ry="16" fill="url(#smallEggGrad)"/>
+    <ellipse cx="1400" cy="420" rx="10" ry="13" fill="url(#smallEggGrad)"/>
+  </g>
+
+  <!-- Conveyor belt (background) -->
+  <rect x="0" y="730" width="1600" height="40" fill="#2a3a10" rx="4"/>
+  <g opacity="0.5">
+    <rect x="50" y="734" width="80" height="32" fill="#1a2808" rx="3"/>
+    <rect x="180" y="734" width="80" height="32" fill="#1a2808" rx="3"/>
+    <rect x="310" y="734" width="80" height="32" fill="#1a2808" rx="3"/>
+    <rect x="440" y="734" width="80" height="32" fill="#1a2808" rx="3"/>
+    <rect x="570" y="734" width="80" height="32" fill="#1a2808" rx="3"/>
+    <rect x="700" y="734" width="80" height="32" fill="#1a2808" rx="3"/>
+    <rect x="830" y="734" width="80" height="32" fill="#1a2808" rx="3"/>
+    <rect x="960" y="734" width="80" height="32" fill="#1a2808" rx="3"/>
+    <rect x="1090" y="734" width="80" height="32" fill="#1a2808" rx="3"/>
+    <rect x="1220" y="734" width="80" height="32" fill="#1a2808" rx="3"/>
+    <rect x="1350" y="734" width="80" height="32" fill="#1a2808" rx="3"/>
+    <rect x="1480" y="734" width="80" height="32" fill="#1a2808" rx="3"/>
+  </g>
+
+  <!-- Small chickens left -->
+  <g filter="url(#drop)" opacity="0.75">
+    <!-- Chicken 1 -->
+    <rect x="134" y="600" width="44" height="36" fill="#fff8cf"/>
+    <rect x="130" y="604" width="6" height="20" fill="#fff8cf"/>
+    <rect x="178" y="604" width="6" height="20" fill="#fff8cf"/>
+    <rect x="148" y="594" width="8" height="8" fill="#d64545"/>
+    <rect x="178" y="608" width="12" height="8" fill="#f6a23d"/>
+    <rect x="170" y="618" width="8" height="6" fill="#d64545"/>
+    <rect x="148" y="634" width="8" height="12" fill="#f6a23d"/>
+    <rect x="162" y="634" width="8" height="12" fill="#f6a23d"/>
+    <!-- Chicken 2 -->
+    <rect x="240" y="610" width="40" height="32" fill="#fff8cf"/>
+    <rect x="236" y="614" width="6" height="18" fill="#fff8cf"/>
+    <rect x="280" y="614" width="6" height="18" fill="#fff8cf"/>
+    <rect x="252" y="604" width="8" height="8" fill="#d64545"/>
+    <rect x="280" y="616" width="10" height="7" fill="#f6a23d"/>
+    <rect x="272" y="626" width="7" height="5" fill="#d64545"/>
+    <rect x="252" y="640" width="8" height="10" fill="#f6a23d"/>
+    <rect x="264" y="640" width="8" height="10" fill="#f6a23d"/>
+  </g>
+
+  <!-- Small chickens right -->
+  <g filter="url(#drop)" opacity="0.75">
+    <rect x="1340" y="600" width="44" height="36" fill="#fff8cf"/>
+    <rect x="1336" y="604" width="6" height="20" fill="#fff8cf"/>
+    <rect x="1384" y="604" width="6" height="20" fill="#fff8cf"/>
+    <rect x="1350" y="594" width="8" height="8" fill="#d64545"/>
+    <rect x="1384" y="608" width="12" height="8" fill="#f6a23d"/>
+    <rect x="1376" y="618" width="8" height="6" fill="#d64545"/>
+    <rect x="1350" y="634" width="8" height="12" fill="#f6a23d"/>
+    <rect x="1364" y="634" width="8" height="12" fill="#f6a23d"/>
+    <rect x="1420" y="610" width="40" height="32" fill="#fff8cf"/>
+    <rect x="1416" y="614" width="6" height="18" fill="#fff8cf"/>
+    <rect x="1460" y="614" width="6" height="18" fill="#fff8cf"/>
+    <rect x="1432" y="604" width="8" height="8" fill="#d64545"/>
+    <rect x="1460" y="616" width="10" height="7" fill="#f6a23d"/>
+    <rect x="1452" y="626" width="7" height="5" fill="#d64545"/>
+    <rect x="1432" y="640" width="8" height="10" fill="#f6a23d"/>
+    <rect x="1444" y="640" width="8" height="10" fill="#f6a23d"/>
+  </g>
+
+  <!-- Main large egg (golden) -->
+  <ellipse cx="800" cy="490" rx="160" ry="200" fill="url(#eggGrad)" filter="url(#drop)"/>
+  <!-- Egg shine -->
+  <ellipse cx="750" cy="380" rx="55" ry="40" fill="#ffffff" opacity="0.15" transform="rotate(-20,750,380)"/>
+  <!-- Egg rim -->
+  <ellipse cx="800" cy="490" rx="160" ry="200" fill="none" stroke="#ffd700" stroke-width="3" opacity="0.4"/>
+
+  <!-- Click sparkles on egg -->
+  <g filter="url(#glow)" opacity="0.9">
+    <line x1="800" y1="278" x2="800" y2="248" stroke="#ffd700" stroke-width="3"/>
+    <line x1="852" y1="290" x2="874" y2="266" stroke="#ffd700" stroke-width="2.5"/>
+    <line x1="748" y1="290" x2="726" y2="266" stroke="#ffd700" stroke-width="2.5"/>
+    <line x1="944" y1="380" x2="972" y2="370" stroke="#ffd700" stroke-width="2.5"/>
+    <line x1="656" y1="380" x2="628" y2="370" stroke="#ffd700" stroke-width="2.5"/>
+  </g>
+
+  <!-- "+1" floating text -->
+  <text x="950" y="340" font-family="monospace" font-size="36" font-weight="bold" fill="#ffd700" opacity="0.75" filter="url(#glow)">+1</text>
+  <text x="620" y="310" font-family="monospace" font-size="26" font-weight="bold" fill="#ffd700" opacity="0.5">+1</text>
+
+  <!-- Title -->
+  <text x="803" y="143" font-family="serif" font-size="92" font-weight="900" fill="#000" opacity="0.55" text-anchor="middle" letter-spacing="3">Egg Factory</text>
+  <text x="800" y="140" font-family="serif" font-size="92" font-weight="900" fill="#8bc34a" text-anchor="middle" letter-spacing="3" filter="url(#softglow)">Egg Factory</text>
+  <text x="800" y="140" font-family="serif" font-size="92" font-weight="900" fill="none" stroke="#c5e1a5" stroke-width="1.5" text-anchor="middle" letter-spacing="3" opacity="0.5">Egg Factory</text>
+
+  <!-- Subtitle -->
+  <text x="800" y="186" font-family="monospace" font-size="26" fill="#aed581" text-anchor="middle" letter-spacing="5" opacity="0.9">IDLE CHICKEN CLICKER</text>
+
+  <!-- Egg count display -->
+  <rect x="590" y="774" width="420" height="54" rx="8" fill="#0d1f08" stroke="#4a7c3f" stroke-width="2" opacity="0.9"/>
+  <text x="800" y="808" font-family="monospace" font-size="24" fill="#ffd700" text-anchor="middle" opacity="0.9">0 egg</text>
+
+  <!-- Scanlines -->
+  <g opacity="0.02">
+    <rect x="0" y="0" width="1600" height="2" fill="#fff"/><rect x="0" y="6" width="1600" height="2" fill="#fff"/>
+    <rect x="0" y="12" width="1600" height="2" fill="#fff"/><rect x="0" y="18" width="1600" height="2" fill="#fff"/>
+    <rect x="0" y="24" width="1600" height="2" fill="#fff"/><rect x="0" y="30" width="1600" height="2" fill="#fff"/>
+    <rect x="0" y="36" width="1600" height="2" fill="#fff"/><rect x="0" y="42" width="1600" height="2" fill="#fff"/>
+    <rect x="0" y="48" width="1600" height="2" fill="#fff"/><rect x="0" y="54" width="1600" height="2" fill="#fff"/>
+    <rect x="0" y="60" width="1600" height="2" fill="#fff"/><rect x="0" y="66" width="1600" height="2" fill="#fff"/>
+  </g>
+</svg>
