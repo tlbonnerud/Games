@@ -12,7 +12,7 @@ export default function FreakyTowersPage() {
         </div>
         <section className="tetris-frame-shell" aria-label="Freaky Towers">
           <iframe
-            src="https://itch.io/embed-upload/8420865?uuid=6ab9f3f4d19e56503d9ee3d2d202ee39&color=333333"
+            src="/freaky-towers/index.html"
             title="Freaky Towers"
             className="tetris-frame"
             allowFullScreen
